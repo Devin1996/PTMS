@@ -8,7 +8,7 @@
     tools:context=".WelcomeActivity">
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/wel_con_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="56dp"
@@ -20,10 +20,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/wel_dri_btn" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/wel_pas_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="47dp"
@@ -33,13 +33,13 @@
         android:layout_marginRight="47dp"
         android:layout_marginBottom="23dp"
         android:text="@string/passenger"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/wel_dri_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/wel_dri_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="51dp"
@@ -48,9 +48,9 @@
         android:layout_marginRight="51dp"
         android:layout_marginBottom="27dp"
         android:text="@string/driver"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/wel_con_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
-    
+        app:layout_constraintTop_toBottomOf="@+id/wel_pas_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
