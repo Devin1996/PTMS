@@ -26,24 +26,24 @@ public class WelcomeActivity extends AppCompatActivity {
         WelcomeDriverBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, PassengerLogin.class);
-                startActivity(intent);
+                Intent dintent = new Intent(WelcomeActivity.this, DriverLogin.class);
+                startActivity(dintent);
             }
         });
 
-        WelcomeDriverBtn.setOnClickListener(new View.OnClickListener(){
+        WelcomePassengerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, DriverLogin.class);
-                startActivity(intent);
+                Intent pintent = new Intent(WelcomeActivity.this, PassengerLogin.class);
+                startActivity(pintent);
             }
         });
 
-        WelcomeDriverBtn.setOnClickListener(new View.OnClickListener(){
+        WelcomeConductorBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, ConductorLogin.class);
-                startActivity(intent);
+                Intent cintent = new Intent(WelcomeActivity.this, ConductorLogin.class);
+                startActivity(cintent);
             }
         });
     }

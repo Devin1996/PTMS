@@ -7,6 +7,17 @@
     android:background="@drawable/bac"
     tools:context=".DriverLogin">
 
+    <TextView
+        android:id="@+id/driver_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginBottom="46dp"
+        android:text="Driver Log In"
+        app:layout_constraintBottom_toTopOf="@+id/dri_log_mail"
+        app:layout_constraintStart_toStartOf="@+id/dri_log_mail" />
+
     <EditText
         android:id="@+id/dri_log_mail"
         android:layout_width="0dp"
@@ -55,8 +66,8 @@
 
     <TextView
         android:id="@+id/dri_reg_noti"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="40dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="44dp"

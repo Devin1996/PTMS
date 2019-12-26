@@ -7,47 +7,69 @@
     android:background="@drawable/bac"
     tools:context=".ConductorLogin">
 
+    <TextView
+        android:id="@+id/conductor_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginBottom="53dp"
+        android:text="Conductor Log In"
+        app:layout_constraintBottom_toTopOf="@+id/con_log_email"
+        app:layout_constraintStart_toStartOf="@+id/con_log_email" />
+
     <EditText
         android:id="@+id/con_log_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginTop="240dp"
         android:ems="10"
         android:hint="Enter Your Email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/con_log_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Enter Your Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="313dp" />
+        app:layout_constraintStart_toStartOf="@+id/con_log_email"
+        app:layout_constraintTop_toBottomOf="@+id/con_log_email" />
 
     <Button
         android:id="@+id/con_log_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
         android:text="Log In"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="399dp" />
+        app:layout_constraintBottom_toTopOf="@+id/con_reg_noti"
+        app:layout_constraintStart_toStartOf="@+id/con_reg_noti" />
 
     <TextView
         android:id="@+id/con_reg_noti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="26dp"
         android:text="Don't have a Account"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="470dp" />
+        app:layout_constraintBottom_toTopOf="@+id/con_reg_men_btn"
+        app:layout_constraintStart_toStartOf="@+id/con_reg_men_btn" />
 
     <Button
         android:id="@+id/con_reg_men_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="124dp"
         android:text="Register as a Conductor"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="515dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
