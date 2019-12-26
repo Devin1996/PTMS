@@ -1,30 +1,51 @@
 package com.example.ptms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DriverLogin extends AppCompatActivity {
 
     private TextView driStatus;
-    private TextView driEmail;
-    private TextView driPwd;
+    private EditText driEmail;
+    private EditText driPwd;
     private Button driLogInBtn;
     private TextView driRegNot;
     private Button driRegGoBtn;
+
+    private ProgressDialog loadingBar;
+
+    private FirebaseAuth mAuth;
         
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_login);
+
+         //Authenticating with Firebase
+         mAuth = FirebaseAuth.getInstance();
     
         driLogInBtn = (Button) findViewById(R.id.dri_log_btn);
         driRegGoBtn = (Button) findViewById(R.id.dri_reg_men_btn);
         driRegNot = (TextView) findViewById(R.id.dri_reg_noti);
         driStatus = (TextView) findViewById(R.id.driver_status);
+        driEmail = (EditText) findViewById(R.id.dri_log_mail);
+        driPwd = (EditText) findViewById(R.id.dri_log_pwd);
+
+        loadingBar = new ProgressDialog(this);
 
         //Register Btn wiil be not shown Until Driver clicks the Register link
 
@@ -53,7 +74,57 @@ public class DriverLogin extends AppCompatActivity {
 
             }
         });
+
+        driRegGoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+                //convert user Input into Strings
+                String Dmail = driEmail.getText().toString();
+                String Dpwd = driPwd.getText().toString();
+
+                //calling the method of user registration When register button clicked
+                RegisterDriver(Dmail,Dpwd);
+            }
+        });
     
-    
+    }
+
+    //Method which is used to validate user input and to create accounts 
+
+    private void RegisterDriver(String pmail, String ppwd) {
+        if (TextUtils.isEmpty(pmail)){
+            Toast.makeText(DriverLogin.this, "Please enter your E mail", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(ppwd)){
+            Toast.makeText(DriverLogin.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            loadingBar.setTitle("Passenger Register");
+            loadingBar.setMessage("Please wait we are registering credentials");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+            //create passenger Account
+            mAuth.createUserWithEmailAndPassword(pmail, ppwd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
+                {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(DriverLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+                    else{
+                        Toast.makeText(DriverLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
+                }
+            });
+        }
     }
 }
