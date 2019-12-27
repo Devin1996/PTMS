@@ -4,4 +4,5 @@
     <string name="passenger">Passenger</string>
     <string name="driver">Driver</string>
     <string name="e_mail">E mail</string>
+    <string name="title_activity_drivers_maps">Map</string>
 </resources>

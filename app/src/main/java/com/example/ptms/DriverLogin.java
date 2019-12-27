@@ -68,8 +68,7 @@ public class DriverLogin extends AppCompatActivity {
                 driRegGoBtn.setVisibility(View.VISIBLE);
                 driRegGoBtn.setEnabled(true);
                 
-                //Intent dintent = new Intent(WelcomeActivity.this, DriverLogin.class);
-                //startActivity(dintent);
+
 
 
             }
@@ -105,6 +104,7 @@ public class DriverLogin extends AppCompatActivity {
     private void LogInDriver(String dmail, String dpwd) {
         if (TextUtils.isEmpty(dmail)){
             Toast.makeText(DriverLogin.this, "Please enter your E mail", Toast.LENGTH_SHORT).show();
+
         }
 
         else if (TextUtils.isEmpty(dpwd)){
@@ -127,6 +127,9 @@ public class DriverLogin extends AppCompatActivity {
                     {
                         Toast.makeText(DriverLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+
+                        Intent dintent = new Intent(DriverLogin.this, DriversMapActivity.class);
+                        startActivity(dintent);
                     }
                     else{
                         Toast.makeText(DriverLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -165,6 +168,9 @@ public class DriverLogin extends AppCompatActivity {
                     {
                         Toast.makeText(DriverLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+
+                        Intent dintent = new Intent(DriverLogin.this, DriversMapActivity.class);
+                        startActivity(dintent);
                     }
                     else{
                         Toast.makeText(DriverLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();
