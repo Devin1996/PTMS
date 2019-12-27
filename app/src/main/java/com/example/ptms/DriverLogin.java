@@ -87,7 +87,55 @@ public class DriverLogin extends AppCompatActivity {
                 RegisterDriver(Dmail,Dpwd);
             }
         });
-    
+        
+        driLogInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+                //convert user Input into Strings
+                String Dmail = driEmail.getText().toString();
+                String Dpwd = driPwd.getText().toString();
+
+                //calling the method of user registration When register button clicked
+                LogInDriver(Dmail,Dpwd);
+            }
+        });
+    }
+
+    private void LogInDriver(String dmail, String dpwd) {
+        if (TextUtils.isEmpty(dmail)){
+            Toast.makeText(DriverLogin.this, "Please enter your E mail", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(dpwd)){
+            Toast.makeText(DriverLogin.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            loadingBar.setTitle("Driver Login");
+            loadingBar.setMessage("Please wait we are cheking your credentials");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+            //create passenger Account
+            mAuth.signInWithEmailAndPassword(dmail, dpwd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
+                {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(DriverLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+                    else{
+                        Toast.makeText(DriverLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
+                }
+            });
+        }
     }
 
     //Method which is used to validate user input and to create accounts 
@@ -102,7 +150,7 @@ public class DriverLogin extends AppCompatActivity {
         }
         else {
 
-            loadingBar.setTitle("Passenger Register");
+            loadingBar.setTitle("Driver Register");
             loadingBar.setMessage("Please wait we are registering credentials");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();

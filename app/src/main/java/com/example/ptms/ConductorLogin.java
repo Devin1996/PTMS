@@ -87,6 +87,55 @@ public class ConductorLogin extends AppCompatActivity {
                 RegisterConductor(Cmail,Cpwd);
             }
         });
+
+        conLogInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+                //convert user Input into Strings
+                String Cmail = conEmail.getText().toString();
+                String Cpwd = conPwd.getText().toString();
+
+                //calling the method of user registration When register button clicked
+                LogInConductor(Cmail,Cpwd);
+            }
+        });
+    }
+
+    private void LogInConductor(String cmail, String cpwd) {
+        if (TextUtils.isEmpty(cmail)){
+            Toast.makeText(ConductorLogin.this, "Please enter your E mail", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (TextUtils.isEmpty(cpwd)){
+            Toast.makeText(ConductorLogin.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            loadingBar.setTitle("Conductor Login");
+            loadingBar.setMessage("Please wait we are cheking your credentials");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+            //create passenger Account
+            mAuth.signInWithEmailAndPassword(cmail, cpwd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
+                {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(ConductorLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+                    else{
+                        Toast.makeText(ConductorLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
+                }
+            });
+        }
     }
 
     //Method which is used to validate user input and to create accounts 
