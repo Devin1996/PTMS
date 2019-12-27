@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -128,7 +129,7 @@ public class DriverLogin extends AppCompatActivity {
                         Toast.makeText(DriverLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-                        Intent dintent = new Intent(DriverLogin.this, DriversMapActivity.class);
+                        Intent dintent = new Intent(DriverLogin.this, DriversMapsActivity.class);
                         startActivity(dintent);
                     }
                     else{
@@ -169,7 +170,7 @@ public class DriverLogin extends AppCompatActivity {
                         Toast.makeText(DriverLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-                        Intent dintent = new Intent(DriverLogin.this, DriversMapActivity.class);
+                        Intent dintent = new Intent(DriverLogin.this, DriversMapsActivity.class);
                         startActivity(dintent);
                     }
                     else{
