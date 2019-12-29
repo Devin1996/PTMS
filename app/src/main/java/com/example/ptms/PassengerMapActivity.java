@@ -5,9 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -20,6 +22,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class PassengerMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,
@@ -31,18 +35,51 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     LocationRequest mLocationRequest;
 
     private Button LogoutPasBtn;
-    private Button settingsPasiBtn;
+    private Button settingsPasBtn;
     private Button MCallBtn;
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+
+    private Boolean currentLogOutDriverStatus= false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_map);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
+        settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
+        MCallBtn = (Button) findViewById(R.id.m_call);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        LogoutPasBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentLogOutDriverStatus=true;
+                //DisconnectTheDriver();
+
+                mAuth.signOut();
+
+                LogOutPassenger();
+            }
+        });
+    }
+
+    private void LogOutPassenger() {
+        Intent welcomeIntent = new Intent(PassengerMapActivity.this, WelcomeActivity.class);
+        welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(welcomeIntent);
+        finish();
     }
 
 
@@ -126,4 +163,6 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 
 
     }
+
+
 }
