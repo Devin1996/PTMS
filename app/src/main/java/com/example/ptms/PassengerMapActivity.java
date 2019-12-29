@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -24,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PassengerMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,
@@ -38,10 +42,15 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     private Button settingsPasBtn;
     private Button MCallBtn;
 
+    private String PasID;
+
+    private LatLng PasPickUpLocation;
+
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private DatabaseReference PasDatabaseRef;
 
-    private Boolean currentLogOutDriverStatus= false;
+    private Boolean currentLogOutPasStatus= false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,7 +60,8 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-
+        PasID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Passsenger Requests");
         LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
         settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
         MCallBtn = (Button) findViewById(R.id.m_call);
@@ -65,12 +75,24 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
             @Override
             public void onClick(View v) {
 
-                currentLogOutDriverStatus=true;
+                currentLogOutPasStatus=true;
                 //DisconnectTheDriver();
 
                 mAuth.signOut();
 
                 LogOutPassenger();
+            }
+        });
+
+        MCallBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GeoFire geoFire = new GeoFire(PasDatabaseRef);
+                geoFire.setLocation(PasID, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+
+                PasPickUpLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Pick Up Passenger"));
             }
         });
     }
