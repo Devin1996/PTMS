@@ -32,6 +32,9 @@ public class PassengerLogin extends AppCompatActivity {
     private ProgressDialog loadingBar;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference PasDatabaseRef;
+    private String onlinePasID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class PassengerLogin extends AppCompatActivity {
 
         //Authenticating with Firebase
         mAuth = FirebaseAuth.getInstance();
+
 
         pasLogInBtn = (Button) findViewById(R.id.passenger_login_btn);
         pasRegGoBtn = (Button) findViewById(R.id.pas_reg_go_btn);
@@ -125,7 +129,7 @@ public class PassengerLogin extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            //create passenger Account
+            //log in passenger Account
             mAuth.signInWithEmailAndPassword(pmail, ppwd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
             {
                 @Override
@@ -133,6 +137,11 @@ public class PassengerLogin extends AppCompatActivity {
                 {
                     if(task.isSuccessful())
                     {
+
+                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
+                        startActivity(mapIntent);
+                        //finish();
+
                         Toast.makeText(PassengerLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
@@ -141,9 +150,7 @@ public class PassengerLogin extends AppCompatActivity {
 //                        DatabaseReference myRef = database.getReference("message");
 //
 //                        myRef.setValue("Hello, World!");
-                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
-                        startActivity(mapIntent);
-                        finish();
+
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -180,6 +187,15 @@ public class PassengerLogin extends AppCompatActivity {
                 {
                     if(task.isSuccessful())
                     {
+                        onlinePasID = mAuth.getCurrentUser().getUid();
+                        PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Passengers").child(onlinePasID);
+
+                        PasDatabaseRef.setValue(true);
+
+                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
+                        startActivity(mapIntent);
+                        //finish();
+
                         Toast.makeText(PassengerLogin.this, "Register Succesfull....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
@@ -188,9 +204,7 @@ public class PassengerLogin extends AppCompatActivity {
 //                        DatabaseReference myRef = database.getReference("message");
 //
 //                        myRef.setValue("Hello, World!");
-                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
-                        startActivity(mapIntent);
-                        finish();
+
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();

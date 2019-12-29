@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DriverLogin extends AppCompatActivity {
 
@@ -30,6 +32,8 @@ public class DriverLogin extends AppCompatActivity {
     private ProgressDialog loadingBar;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference DriDatabaseRef;
+    private String onlineDriID;
         
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class DriverLogin extends AppCompatActivity {
 
          //Authenticating with Firebase
          mAuth = FirebaseAuth.getInstance();
-    
+
         driLogInBtn = (Button) findViewById(R.id.dri_log_btn);
         driRegGoBtn = (Button) findViewById(R.id.dri_reg_men_btn);
         driRegNot = (TextView) findViewById(R.id.dri_reg_noti);
@@ -126,11 +130,13 @@ public class DriverLogin extends AppCompatActivity {
                 {
                     if(task.isSuccessful())
                     {
+                        Intent dintent = new Intent(DriverLogin.this, DriversMapsActivity.class);
+                        startActivity(dintent);
+
                         Toast.makeText(DriverLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-                        Intent dintent = new Intent(DriverLogin.this, DriversMapsActivity.class);
-                        startActivity(dintent);
+
                     }
                     else{
                         Toast.makeText(DriverLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -167,11 +173,18 @@ public class DriverLogin extends AppCompatActivity {
                 {
                     if(task.isSuccessful())
                     {
-                        Toast.makeText(DriverLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
-                        loadingBar.dismiss();
+                        onlineDriID = mAuth.getCurrentUser().getUid();
+                        DriDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(onlineDriID);
+
+                        DriDatabaseRef.setValue(true);
 
                         Intent dintent = new Intent(DriverLogin.this, DriversMapsActivity.class);
                         startActivity(dintent);
+
+                        Toast.makeText(DriverLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+
+
                     }
                     else{
                         Toast.makeText(DriverLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();
