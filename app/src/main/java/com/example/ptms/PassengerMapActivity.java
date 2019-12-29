@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,6 +65,8 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     private DatabaseReference DriverLocationRef;
     private DatabaseReference DriverAvailableRef;
     private DatabaseReference DriversRef;
+
+    Marker DriverMarker;
 
 
     private Boolean currentLogOutPasStatus= false;
@@ -186,9 +190,44 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                         {
                             List<Object> driverLocationMap = (List<Object>) dataSnapshot.getValue();
                             double LocationLat = 0;
-                            double LocatioLng = 0;
+                            double LocationLng = 0;
 
                             MCallBtn.setText("Bus Found");
+
+                            // Getting Lattitude and Longtiitude from the DB and coonvert it to  Double
+
+                            if (driverLocationMap.get(0) != null)
+                            {
+                                LocationLat = Double.parseDouble(driverLocationMap.get(0).toString());
+                            }
+                            if (driverLocationMap.get(1) != null)
+                            {
+                                LocationLng = Double.parseDouble(driverLocationMap.get(1).toString());
+                            }
+
+                            // Add Marker for Driver Location
+                            LatLng DriverLatLng = new LatLng(LocationLat, LocationLng);
+
+                            if (DriverMarker !=null)
+                            {
+                                DriverMarker.remove();
+                            }
+
+                            //Displaying the Distance Betwen the Passenger and The Bus
+
+                            Location location1 = new Location("");
+                            location1.setLatitude(PasPickUpLocation.latitude);
+                            location1.setLongitude(PasPickUpLocation.longitude);
+
+                            Location location2 = new Location("");
+                            location2.setLatitude(DriverLatLng.latitude);
+                            location2.setLongitude(DriverLatLng.longitude);
+
+                            float Distance = location1.distanceTo(location2);
+                            MCallBtn.setText("Bus found :"+ String.valueOf(Distance) );
+
+                            DriverMarker = mMap.addMarker(new MarkerOptions().position(DriverLatLng).title("Your Bus Is Here"));
+
                         }
 
                     }

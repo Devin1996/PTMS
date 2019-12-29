@@ -151,15 +151,20 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
             LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
 
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
-
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
+            DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
-            GeoFire geoFire = new GeoFire(ref);
-            geoFire.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+            GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
+
+            DatabaseReference DriverWorkingref = FirebaseDatabase.getInstance().getReference().child("drivers_working");
+
+            GeoFire geoFireWorking = new GeoFire(DriverWorkingref);
+
+            geoFireAvailable.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+
+            geoFireWorking.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
         }
 
     }
