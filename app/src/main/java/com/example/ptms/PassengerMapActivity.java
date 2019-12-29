@@ -28,9 +28,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class PassengerMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,
@@ -56,6 +61,9 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     private FirebaseUser currentUser;
     private DatabaseReference PasDatabaseRef;
     private DatabaseReference DriverLocationRef;
+    private DatabaseReference DriverAvailableRef;
+    private DatabaseReference DriversRef;
+
 
     private Boolean currentLogOutPasStatus= false;
 
@@ -70,7 +78,8 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
         PasID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Passsenger Requests");
 
-        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("drivers_working");
+        DriverAvailableRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
         LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
         settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
@@ -113,7 +122,7 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     private void GetClosetDriverCab()
     {
 
-        GeoFire geoFire = new GeoFire(PasDatabaseRef);
+        GeoFire geoFire = new GeoFire(DriverAvailableRef);
 
         GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(PasPickUpLocation.latitude, PasPickUpLocation.longitude), radius);
         geoQuery.removeAllListeners();
@@ -126,6 +135,14 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                 {
                     driverFound = true;
                     driverFoundID = key;
+
+                    DriversRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
+                    HashMap driverMap = new HashMap();
+                    driverMap.put("PasRideId", PasID);
+                    DriversRef.updateChildren(driverMap);
+
+                    GettingDriverLocation();
+                    MCallBtn.setText("Searching for Bus");
                 }
             }
 
@@ -156,6 +173,32 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
             }
         });
 
+    }
+
+    private void GettingDriverLocation()
+    {
+        DriverLocationRef.child(driverFoundID).child("l")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+                        if(dataSnapshot.exists())
+                        {
+                            List<Object> driverLocationMap = (List<Object>) dataSnapshot.getValue();
+                            double LocationLat = 0;
+                            double LocatioLng = 0;
+
+                            MCallBtn.setText("Bus Found");
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError)
+                    {
+
+                    }
+                });
     }
 
     private void LogOutPassenger() {
