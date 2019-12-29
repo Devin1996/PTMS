@@ -107,7 +107,7 @@ public class ConductorMapActivity extends FragmentActivity implements OnMapReady
 
 
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("driversAvailable");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("conductorsAvailable");
 
         GeoFire geoFire = new GeoFire(ref);
         geoFire.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
@@ -121,5 +121,14 @@ public class ConductorMapActivity extends FragmentActivity implements OnMapReady
                 .addApi(LocationServices.API)
                 .build();
         googleApiClient.connect();
+    }
+
+    protected void onStop(){
+        super.onStop();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("conductorsAvailable");
+
+        GeoFire geoFire = new GeoFire(ref);
+        geoFire.removeLocation(userId);
     }
 }

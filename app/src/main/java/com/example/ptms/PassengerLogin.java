@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PassengerLogin extends AppCompatActivity {
 
@@ -133,6 +135,12 @@ public class PassengerLogin extends AppCompatActivity {
                     {
                         Toast.makeText(PassengerLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+
+                        // Write a message to the database
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("message");
+
+                        myRef.setValue("Hello, World!");
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -171,6 +179,12 @@ public class PassengerLogin extends AppCompatActivity {
                     {
                         Toast.makeText(PassengerLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+
+                        // Write a message to the database
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("message");
+
+                        myRef.setValue("Hello, World!");
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();
