@@ -137,10 +137,10 @@ public class PassengerLogin extends AppCompatActivity {
                         loadingBar.dismiss();
 
                         // Write a message to the database
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("message");
-
-                        myRef.setValue("Hello, World!");
+//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                        DatabaseReference myRef = database.getReference("message");
+//
+//                        myRef.setValue("Hello, World!");
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -177,14 +177,14 @@ public class PassengerLogin extends AppCompatActivity {
                 {
                     if(task.isSuccessful())
                     {
-                        Toast.makeText(PassengerLogin.this, "Register Succesful....", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PassengerLogin.this, "Register Succesfull....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
                         // Write a message to the database
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("message");
-
-                        myRef.setValue("Hello, World!");
+//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                        DatabaseReference myRef = database.getReference("message");
+//
+//                        myRef.setValue("Hello, World!");
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();
