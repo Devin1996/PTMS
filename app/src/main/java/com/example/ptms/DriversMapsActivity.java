@@ -27,8 +27,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class DriversMapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,
@@ -46,7 +51,9 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
     private FirebaseUser currentUser;
 
     private Boolean currentLogOutDriverStatus= false;
+    private DatabaseReference AssignPasRef, AssignedPasPickUpRef;
 
+    private String driverId, PasId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,8 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+        //get the online Driver Ids
+        driverId = mAuth.getCurrentUser().getUid();
 
         LogoutDriBtn = (Button) findViewById(R.id.m_d_logout);
         settingsDriBtn = (Button) findViewById(R.id.m_d_setting);
@@ -74,6 +83,74 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
                 mAuth.signOut();
 
                 LogOutDriver();
+            }
+        });
+
+        GetAssignedCustomerRequest();
+    }
+
+    //tell the driver where the location
+    private void GetAssignedCustomerRequest()
+    {
+        AssignPasRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child("PasRideId");
+
+        // get the passenger value
+
+        AssignPasRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    PasId = dataSnapshot.getValue().toString();
+                    //get passenger current location
+                    GetAssignedPasPickupLocation();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void GetAssignedPasPickupLocation()
+    {
+        AssignedPasPickUpRef = FirebaseDatabase.getInstance().getReference().child("passenger_requests").child(PasId).child("l");
+
+        AssignedPasPickUpRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    List<Object> pasLocationMap = (List<Object>) dataSnapshot.getValue();
+                    double LocationLat = 0;
+                    double LocationLng = 0;
+
+                    // Getting Lattitude and Longtiitude from the DB and coonvert it to  Double
+
+                    if (pasLocationMap.get(0) != null)
+                    {
+                        LocationLat = Double.parseDouble(pasLocationMap.get(0).toString());
+                    }
+                    if (pasLocationMap.get(1) != null)
+                    {
+                        LocationLng = Double.parseDouble(pasLocationMap.get(1).toString());
+                    }
+
+                    // Add Marker for Driver Location
+                    LatLng DriverLatLng = new LatLng(LocationLat, LocationLng);
+
+                    mMap.addMarker(new MarkerOptions().position(DriverLatLng).title("Your Passengers are Here"));
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -162,9 +239,20 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
 
             GeoFire geoFireWorking = new GeoFire(DriverWorkingref);
 
-            geoFireAvailable.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+            switch (PasId)
+            {
+                case "": geoFireWorking.removeLocation(userId);
+                    geoFireAvailable.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+                    break;
 
-            geoFireWorking.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+                 default: geoFireAvailable.removeLocation(userId);
+                     geoFireWorking.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+                     break;
+            }
+
+            //geoFireAvailable.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
+
+            //geoFireWorking.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
         }
 
     }
