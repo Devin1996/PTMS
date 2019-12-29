@@ -14,6 +14,8 @@ import android.widget.Button;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
+import com.firebase.geofire.GeoQuery;
+import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -26,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,10 +48,14 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     private String PasID;
 
     private LatLng PasPickUpLocation;
+    private int radius = 1;
+    private Boolean driverFound = false;
+    private String driverFoundID;
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private DatabaseReference PasDatabaseRef;
+    private DatabaseReference DriverLocationRef;
 
     private Boolean currentLogOutPasStatus= false;
 
@@ -62,6 +69,9 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
         currentUser = mAuth.getCurrentUser();
         PasID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Passsenger Requests");
+
+        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+
         LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
         settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
         MCallBtn = (Button) findViewById(R.id.m_call);
@@ -93,8 +103,59 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 
                 PasPickUpLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Pick Up Passenger"));
+
+                MCallBtn.setText("Getting Driver");
+                GetClosetDriverCab();
             }
         });
+    }
+
+    private void GetClosetDriverCab()
+    {
+
+        GeoFire geoFire = new GeoFire(PasDatabaseRef);
+
+        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(PasPickUpLocation.latitude, PasPickUpLocation.longitude), radius);
+        geoQuery.removeAllListeners();
+
+        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+            @Override
+            public void onKeyEntered(String key, GeoLocation location) {
+
+                if (!driverFound)
+                {
+                    driverFound = true;
+                    driverFoundID = key;
+                }
+            }
+
+            @Override
+            public void onKeyExited(String key) {
+
+            }
+
+            @Override
+            public void onKeyMoved(String key, GeoLocation location) {
+
+            }
+
+            @Override
+            public void onGeoQueryReady() {
+                if (!driverFound)
+                {
+                    radius= radius+1;
+                    GetClosetDriverCab();
+                }
+            }
+
+            @Override
+            public void onGeoQueryError(DatabaseError error) {
+
+
+
+            }
+        });
+
     }
 
     private void LogOutPassenger() {
