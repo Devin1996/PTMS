@@ -141,6 +141,9 @@ public class PassengerLogin extends AppCompatActivity {
 //                        DatabaseReference myRef = database.getReference("message");
 //
 //                        myRef.setValue("Hello, World!");
+                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
+                        startActivity(mapIntent);
+                        finish();
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Log In Unsuccesful", Toast.LENGTH_SHORT).show();
@@ -185,6 +188,9 @@ public class PassengerLogin extends AppCompatActivity {
 //                        DatabaseReference myRef = database.getReference("message");
 //
 //                        myRef.setValue("Hello, World!");
+                        Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
+                        startActivity(mapIntent);
+                        finish();
                     }
                     else{
                         Toast.makeText(PassengerLogin.this, "Registration Unsuccesful", Toast.LENGTH_SHORT).show();

@@ -6,4 +6,5 @@
     <string name="e_mail">E mail</string>
     <string name="title_activity_drivers_maps">Map</string>
     <string name="title_activity_conductor_map">Map</string>
+    <string name="title_activity_passenger_map">Map</string>
 </resources>

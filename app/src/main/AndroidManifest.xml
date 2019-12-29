@@ -32,8 +32,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".PassengerMapActivity"
+            android:label="@string/title_activity_passenger_map"></activity>
+        <activity
             android:name=".ConductorMapActivity"
-            android:label="@string/title_activity_conductor_map"></activity>
+            android:label="@string/title_activity_conductor_map" />
         <activity
             android:name=".DriversMapsActivity"
             android:label="@string/title_activity_drivers_maps" />
@@ -49,13 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".MainActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
     </application>
 
 </manifest>
