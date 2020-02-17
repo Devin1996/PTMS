@@ -115,7 +115,7 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                 geoFire.setLocation(PasID, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
                 PasPickUpLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Pick Up Passenger"));
+                mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Pick Me"));
 
                 MCallBtn.setText("Getting Driver");
                 GetClosetDriverCab();
@@ -183,6 +183,7 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     {
         DriverLocationRef.child(driverFoundID).child("l")
                 .addValueEventListener(new ValueEventListener() {
+                    //datasnapshot for get the lat
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                     {

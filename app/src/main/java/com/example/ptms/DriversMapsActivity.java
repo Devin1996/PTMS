@@ -53,7 +53,7 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
     private Boolean currentLogOutDriverStatus= false;
     private DatabaseReference AssignPasRef, AssignedPasPickUpRef;
 
-    private String driverId, PasId;
+    private String driverId, PasId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +95,6 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
         AssignPasRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child("PasRideId");
 
         // get the passenger value
-
         AssignPasRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
@@ -231,12 +230,11 @@ public class DriversMapsActivity extends FragmentActivity implements OnMapReadyC
             mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
+            DatabaseReference DriverAvailabilityref = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
             GeoFire geoFireAvailable = new GeoFire(DriverAvailabilityref);
 
             DatabaseReference DriverWorkingref = FirebaseDatabase.getInstance().getReference().child("drivers_working");
-
             GeoFire geoFireWorking = new GeoFire(DriverWorkingref);
 
             switch (PasId)
