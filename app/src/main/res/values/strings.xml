@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PTMS</string>
+    <string name="app_name">TOD</string>
     <string name="conductor">Conductor</string>
     <string name="passenger">Passenger</string>
     <string name="driver">Driver</string>
