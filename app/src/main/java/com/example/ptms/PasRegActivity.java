@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PasRegActivity extends AppCompatActivity {
 
@@ -35,10 +37,14 @@ public class PasRegActivity extends AppCompatActivity {
     private Button PasRegBtn;
 
 
+
     private ProgressDialog loadingBar;
 
     private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
     private DatabaseReference PasDatabaseRef;
+
+    String PasId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,8 @@ public class PasRegActivity extends AppCompatActivity {
         //Authenticating with Firebase
         mAuth = FirebaseAuth.getInstance();
 
-        pasRegName = (EditText) findViewById(R.id.register_username_input);
+
+        //pasRegName = (EditText) findViewById(R.id.register_username_input);
         pasRegEmail = (EditText) findViewById(R.id.pas_email_reg);
         pasRegPwd = (EditText) findViewById(R.id.pas_pwd_reg);
         pasRegCpwd = (EditText) findViewById(R.id.pas_cpwd_reg);
@@ -61,13 +68,14 @@ public class PasRegActivity extends AppCompatActivity {
         PasRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String pasName = pasRegName.getText().toString();
+                //String pasName = pasRegName.getText().toString();
                 String pasEmail = pasRegEmail.getText().toString();
                 String pasPwd = pasRegPwd.getText().toString();
                 String pasCPwd = pasRegCpwd.getText().toString();
 
                 //calling the method of user registration When register button clicked
-                RegisterPassenger(pasName, pasEmail, pasPwd, pasCPwd);
+                //RegisterPassenger(pasName, pasEmail, pasPwd, pasCPwd);
+                RegisterPassenger(pasEmail, pasPwd, pasCPwd);
                 //StorePassengerData(pasName,pasEmail,pasPwd,pasCPwd);
                 //StorePassengerData();
 
@@ -76,12 +84,14 @@ public class PasRegActivity extends AppCompatActivity {
     }
 
 
-    private void RegisterPassenger(String pasName, String pasEmail, String pasPwd, String pasCPwd) {
+    private void RegisterPassenger(final String pasEmail, String pasPwd, String pasCPwd) {
 
 
-        if (TextUtils.isEmpty(pasName)) {
-            Toast.makeText(PasRegActivity.this, "Please enter your Name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(pasEmail)) {
+//        if (TextUtils.isEmpty(pasName)) {
+//            Toast.makeText(PasRegActivity.this, "Please enter your Name", Toast.LENGTH_SHORT).show();
+//        } else
+
+        if (TextUtils.isEmpty(pasEmail)) {
 
             Toast.makeText(PasRegActivity.this, "Please enter a valid Email", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(pasPwd)) {
@@ -100,32 +110,32 @@ public class PasRegActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            //StorePassengerData(pasName,pasEmail,pasCPwd,pasCPwd);
 
-            //create passenger Account
             mAuth.createUserWithEmailAndPassword(pasEmail, pasPwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
 
-                        Intent mapIntent = new Intent(PasRegActivity.this, WelcomeActivity.class);
+                        Intent mapIntent = new Intent(PasRegActivity.this, PasMenuActivity.class);
                         startActivity(mapIntent);
-                        //finish();
-                        //StorePassengerData(pasName,pasEmail,pasCPwd,pasCPwd);
 
 
                         Toast.makeText(PasRegActivity.this, "Registered Successfully....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-//                    PasDatabaseRef = FirebaseDatabase.getInstance().getReference();
-//                    if (!(child("Users").child("Passenger").child(eMail).exists()))
-//                    HashMap<String, Object> mHashmap = new HashMap<>();
-//                    mHashmap.put("Name 1/title", "Ashok");
-//                    mHashmap.put("Name 1/content", "Parinitha");
-//                    mHashmap.put("Name 2/title", "Krishna");
-//                    mHashmap.put("Name 2/content", "Sumuthra");
-//                    PasDatabaseRef.updateChildren(mHashmap);
+                        // Write a message to the database
+                        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        //DatabaseReference myRef = database.getReference("Users/Passengers");
 
+                        //myRef.setValue("Hello, World!");
+//
+//                       PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("User").child("Passenger");
+//
+//                        HashMap<String, Object> mHashmap = new HashMap<>();
+//                        mHashmap.put("Name",pasName );
+//                        mHashmap.put("E mail", pasEmail);
+//                        PasDatabaseRef.child(pasEmail).updateChildren(mHashmap);
+//
 
                     } else {
                         Toast.makeText(PasRegActivity.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
@@ -139,35 +149,49 @@ public class PasRegActivity extends AppCompatActivity {
         }
     }
 
-    private void StorePassengerData() {
-        final String pasName = pasRegName.getText().toString();
-        final String pasEmail = pasRegEmail.getText().toString();
-        final String pasPwd = pasRegPwd.getText().toString();
-        final String pasCPwd = pasRegCpwd.getText().toString();
+    private void StorePassengerData(final String pasName, final String pasEmail, final String pasPwd, String pasCPwd) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
 
-
-        PasDatabaseRef = FirebaseDatabase.getInstance().getReference();
-
-        PasDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!(dataSnapshot.child("Users").child("Passenger").child(pasEmail).exists())) {
+                if (!(dataSnapshot.child("Users").child(pasEmail).exists()))
+                {
                     HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("Name ", pasName);
-                    userdataMap.put("E mail", pasEmail);
+                    userdataMap.put("phone", pasEmail);
                     userdataMap.put("password", pasPwd);
-                    userdataMap.put("Confirm Password", pasCPwd);
+                    userdataMap.put("name", pasName);
 
-                    PasDatabaseRef.child("Users").child("Passenger").child(pasEmail).updateChildren(userdataMap);
-                    Intent mapIntent = new Intent(PasRegActivity.this, WelcomeActivity.class);
-                    startActivity(mapIntent);
+                    RootRef.child("Users").child(pasEmail).updateChildren(userdataMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
 
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(PasRegActivity.this, "Congratulations, you account has been created ", Toast.LENGTH_SHORT).show();
+                                        loadingBar.dismiss();
 
-                } else {
+                                        Intent intent = new Intent(PasRegActivity.this, WelcomeActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        loadingBar.dismiss();
+                                        Toast.makeText(PasRegActivity.this, "Network Error.. please try again after some time...", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                }
+                else
+                {
                     Toast.makeText(PasRegActivity.this, "This " + pasEmail + "already exists", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(PasRegActivity.this, "Please try again using another Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasRegActivity.this, "Please try again usin another phone number", Toast.LENGTH_SHORT).show();
 
+                    Intent intent = new Intent(PasRegActivity.this, WelcomeActivity.class);
+                    startActivity(intent);
                 }
             }
 
@@ -177,4 +201,10 @@ public class PasRegActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
 }

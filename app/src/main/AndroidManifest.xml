@@ -17,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PasLoginActivity"></activity>
+        <activity
+            android:name=".PasMenuActivity"
+            android:label="@string/title_activity_pas_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".PasLoginActivity" />
         <activity android:name=".PasRegActivity" />
         <activity android:name=".PasMainActivity" />
         <activity android:name=".MainActivity" />

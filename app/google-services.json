@@ -8,18 +8,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1028667957586:android:002271822320bc57131a8b",
+        "mobilesdk_app_id": "1:1028667957586:android:b9fc6626e3bf1494131a8b",
         "android_client_info": {
           "package_name": "com.example.ptms"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1028667957586-j11dpp7uir7veh14gufibfi8bclv9f1a.apps.googleusercontent.com",
+          "client_id": "1028667957586-ed4jinjhua4ojnr9643j9q9abs1dfrg8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.ptms",
-            "certificate_hash": "26a667b0dd7d67333c0f333890c85ee5d613cdbe"
+            "certificate_hash": "3316529308d1565d63ef09f5d1de3ae700fc0678"
+          }
+        },
+        {
+          "client_id": "1028667957586-o868bfbiju2edps5edfeavbmjmpmrv7b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ptms",
+            "certificate_hash": "5cb7c0316e482718ab9a1179b7f259ba07a47585"
           }
         },
         {
@@ -29,7 +37,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9BSCGLgs6uVamMsNwddbX78JtErr8G_8"
+          "current_key": "AIzaSyAD-UwbXGZifRRxdrq6OE6WKFyUEjV2msg"
         }
       ],
       "services": {

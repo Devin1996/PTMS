@@ -80,7 +80,7 @@ public class PasLoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
 
-                        Intent mapIntent = new Intent(PasLoginActivity.this, PassengerMapActivity.class);
+                        Intent mapIntent = new Intent(PasLoginActivity.this, PasMenuActivity.class);
                         startActivity(mapIntent);
                         //finish();
 
