@@ -140,7 +140,7 @@ public class PassengerLogin extends AppCompatActivity {
 
                         Intent  mapIntent = new Intent(PassengerLogin.this, PassengerMapActivity.class);
                         startActivity(mapIntent);
-                        //finish();
+                        finish();
 
                         Toast.makeText(PassengerLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();

@@ -82,7 +82,7 @@ public class PasLoginActivity extends AppCompatActivity {
 
                         Intent mapIntent = new Intent(PasLoginActivity.this, PasMenuActivity.class);
                         startActivity(mapIntent);
-                        //finish();
+                        finish();
 
                         Toast.makeText(PasLoginActivity.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
