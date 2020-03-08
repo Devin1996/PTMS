@@ -78,6 +78,7 @@ public class PasRegActivity extends AppCompatActivity {
                 RegisterPassenger(pasEmail, pasPwd, pasCPwd);
                 //StorePassengerData(pasName,pasEmail,pasPwd,pasCPwd);
                 //StorePassengerData();
+                onAuthStateChanged(mAuth);
 
             }
         });
@@ -116,8 +117,11 @@ public class PasRegActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
 
+                        //FirebaseUser user = mAuth.getCurrentUser();
                         Intent mapIntent = new Intent(PasRegActivity.this, PasMenuActivity.class);
+
                         startActivity(mapIntent);
+                        finish();
 
 
                         Toast.makeText(PasRegActivity.this, "Registered Successfully....", Toast.LENGTH_SHORT).show();
@@ -135,6 +139,8 @@ public class PasRegActivity extends AppCompatActivity {
 //                        mHashmap.put("Name",pasName );
 //                        mHashmap.put("E mail", pasEmail);
 //                        PasDatabaseRef.child(pasEmail).updateChildren(mHashmap);
+
+
 //
 
                     } else {
@@ -146,6 +152,23 @@ public class PasRegActivity extends AppCompatActivity {
             });
 
 
+        }
+    }
+
+    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        String pasEmail = pasRegEmail.getText().toString();
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user != null) {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            //Map<String, String> map = new HashMap<>();
+            //map.put("Email", user.getProviders().get(0));
+            //map.put("Email", user.getEmail());
+            HashMap<String, Object> mHashmap = new HashMap<>();
+            mHashmap.put("E mail", pasEmail);
+
+
+            ref.child("User").child("Passenger").child(user.getUid()).setValue(mHashmap);
         }
     }
 
