@@ -89,7 +89,7 @@ public class PasMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_share:
-                        Intent settingsIntent = new Intent(PasMenuActivity.this, TestActivity.class);
+                        Intent settingsIntent = new Intent(PasMenuActivity.this, PassSettingsActivity.class);
                         startActivity(settingsIntent);
                         break;
 
