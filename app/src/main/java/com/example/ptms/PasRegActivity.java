@@ -161,12 +161,8 @@ public class PasRegActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-            //Map<String, String> map = new HashMap<>();
-            //map.put("Email", user.getProviders().get(0));
-            //map.put("Email", user.getEmail());
             HashMap<String, Object> mHashmap = new HashMap<>();
             mHashmap.put("E mail", pasEmail);
-
 
             ref.child("User").child("Passenger").child(user.getUid()).setValue(mHashmap);
         }
