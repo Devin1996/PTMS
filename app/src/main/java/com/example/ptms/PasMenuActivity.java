@@ -1,18 +1,23 @@
 package com.example.ptms;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -20,17 +25,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
+
+import io.paperdb.Paper;
 
 public class PasMenuActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+
     private AppBarConfiguration mAppBarConfiguration;
+    private Boolean currentLogOutPasStatus= false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pas_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +56,7 @@ public class PasMenuActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -51,6 +68,46 @@ public class PasMenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.bringToFront();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_home:
+                        Toast.makeText(getApplicationContext(),"Home is Selected",Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.nav_gallery:
+                        Toast.makeText(getApplicationContext(),"nav_gallery is Selected",Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.nav_slideshow:
+                        Toast.makeText(getApplicationContext(),"nav_slideshow is Selected",Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.nav_tools:
+                        Toast.makeText(getApplicationContext(),"nav_tools is Selected",Toast.LENGTH_LONG).show();
+                        break;
+
+                    case R.id.nav_share:
+                        Intent settingsIntent = new Intent(PasMenuActivity.this, TestActivity.class);
+                        startActivity(settingsIntent);
+                        break;
+
+                    case R.id.nav_send:
+                        currentLogOutPasStatus= true;
+                        mAuth.signOut();
+                        Paper.book().destroy();
+
+                        Intent logoutIntent = new Intent(PasMenuActivity.this, PasMainActivity.class);
+                        logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(logoutIntent);
+                        finish();
+                        break;
+                }
+                drawer.closeDrawers();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -66,4 +123,10 @@ public class PasMenuActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+
+
+
 }
