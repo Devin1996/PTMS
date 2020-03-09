@@ -14,27 +14,27 @@
         android:id="@+id/loginlogo"
         android:layout_width="130dp"
         android:layout_height="0dp"
-        android:layout_marginTop="311dp"
+        android:layout_marginTop="280dp"
         android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/Pas_login_mail"
+        app:layout_constraintBottom_toTopOf="@+id/Pas_login_no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo5" />
 
     <EditText
-        android:id="@+id/Pas_login_mail"
+        android:id="@+id/Pas_login_no"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginlogo"
 
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="17dp"
         android:background="@drawable/input_design"
-        android:hint="Enter your Email"
+        android:hint="Mobile Number"
         android:inputType="text"
         android:padding="20dp"
         android:textColor="@color/colorPrimaryDark"
@@ -46,15 +46,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginlogo" />
 
+    <EditText
+        android:id="@+id/Pas_login_pwd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Pas_login_no"
+
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/input_design"
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/remember_me"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pas_login_no" />
+
+    <CheckBox
+        android:id="@+id/remember_me"
+        style="@style/Material.Drawable.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="9dp"
+        android:gravity="center_vertical"
+        android:text="Remember me"
+        android:textColor="@color/colorPrimaryDark"
+
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cbd_strokeColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/pas_login_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pas_login_pwd" />
+
     <Button
         android:id="@+id/pas_login_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/register_password_input"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
         android:layout_marginBottom="13dp"
         android:background="@drawable/buttons"
         android:padding="17dp"
@@ -65,31 +108,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pas_login_pwd" />
-
-    <EditText
-        android:id="@+id/Pas_login_pwd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Pas_login_mail"
-
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="18dp"
-        android:background="@drawable/input_design"
-        android:hint="Enter the Password"
-        android:inputType="textPassword"
-        android:padding="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pas_login_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pas_login_mail" />
+        app:layout_constraintTop_toBottomOf="@+id/remember_me" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

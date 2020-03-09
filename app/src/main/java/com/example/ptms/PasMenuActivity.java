@@ -18,6 +18,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -33,6 +35,8 @@ public class PasMenuActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private DatabaseReference PasDatabaseRef;
+    String PasId;
 
     private AppBarConfiguration mAppBarConfiguration;
     private Boolean currentLogOutPasStatus= false;
@@ -42,11 +46,15 @@ public class PasMenuActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+        PasId = currentUser.getUid();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pas_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+        final String PassengerId = intent.getStringExtra("PasId");
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +82,10 @@ public class PasMenuActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                // Write a message to the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+                myRef.setValue("Just Checking"+PassengerId);
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(),"Home is Selected",Toast.LENGTH_LONG).show();

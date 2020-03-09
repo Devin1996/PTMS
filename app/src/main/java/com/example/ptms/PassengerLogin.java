@@ -145,11 +145,7 @@ public class PassengerLogin extends AppCompatActivity {
                         Toast.makeText(PassengerLogin.this, "Logged In Succesful....", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-                        // Write a message to the database
-//                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                        DatabaseReference myRef = database.getReference("message");
-//
-//                        myRef.setValue("Hello, World!");
+
 
                     }
                     else{
