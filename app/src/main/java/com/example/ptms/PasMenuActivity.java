@@ -33,8 +33,7 @@ import io.paperdb.Paper;
 
 public class PasMenuActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
+
     private DatabaseReference PasDatabaseRef;
     String PasId;
 
@@ -44,9 +43,7 @@ public class PasMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        PasId = currentUser.getUid();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pas_menu);
@@ -107,7 +104,6 @@ public class PasMenuActivity extends AppCompatActivity {
 
                     case R.id.nav_send:
                         currentLogOutPasStatus= true;
-                        mAuth.signOut();
                         Paper.book().destroy();
 
                         Intent logoutIntent = new Intent(PasMenuActivity.this, PasMainActivity.class);

@@ -238,7 +238,7 @@ private void CreateAccount() {
 
                                         Intent intent = new Intent(PasRegActivity.this, PasMenuActivity.class);
                                         startActivity(intent);
-                                        finish();
+                                        //finish();
                                     }
                                     else {
                                         loadingBar.dismiss();
