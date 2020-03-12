@@ -100,11 +100,11 @@ public class PasLoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccount(final String phone, final String password) {
 
-//        if(chkBoxRememberMe.isChecked())
-//        {
-//            Paper.book().write(Prevelent.UserPhoneKey, phone);
-//            Paper.book().write(Prevelent.UserPasswordKey, password);
-//        }
+        if(chkBoxRememberMe.isChecked())
+        {
+            Paper.book().write(Prevelent.UserPhoneKey, phone);
+            Paper.book().write(Prevelent.UserPasswordKey, password);
+        }
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -126,7 +126,7 @@ public class PasLoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(PasLoginActivity.this, PasMenuActivity.class);
-                                //Prevelent.currentOnlineUser = usersData;
+                                Prevelent.currentOnlineUser = usersData;
                                 startActivity(intent);
 
 

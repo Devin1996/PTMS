@@ -39,9 +39,9 @@
 
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="11dp"
         android:background="@drawable/input_design"
         android:hint="Enter a Password"
         android:inputType="textPassword"
@@ -50,9 +50,9 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pas_cpwd_reg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pas_mobile_reg" />
 
     <EditText
         android:id="@+id/pas_cpwd_reg"
@@ -66,7 +66,7 @@
         android:layout_marginRight="14dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/input_design"
-        android:hint="Confirm the Password"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/colorPrimaryDark"
@@ -106,7 +106,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="298dp"
         android:background="@drawable/input_design"
         android:ems="10"
         android:hint="Enter your Name"
@@ -116,7 +116,7 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pas_mobile_reg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -127,9 +127,9 @@
 
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="88dp"
         android:background="@drawable/input_design"
         android:ems="10"
         android:hint="Enter your Mobile No"
@@ -139,38 +139,15 @@
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pas_pwd_reg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/pas_email_reg"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/input_design"
-        android:ems="10"
-        android:hint="Enter your Email"
-        android:inputType="textEmailAddress"
-        android:padding="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pas_pwd_reg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pas_name" />
 
     <ImageView
         android:id="@+id/reglogo"
         android:layout_width="130dp"
         android:layout_height="229dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/pas_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

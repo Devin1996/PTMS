@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import io.paperdb.Paper;
@@ -53,6 +54,8 @@ public class PasMenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String PassengerId = intent.getStringExtra("PasId");
 
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,10 @@ public class PasMenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        //TextView userNameTextView = headerview.findViewById(R.id.user_profile_name);
+        //userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
         navigationView.bringToFront();
 

@@ -1,5 +1,7 @@
 package com.example.ptms.Model;
 
+import android.net.Uri;
+import com.google.firebase.storage.StorageReference;
 
 public class Passenger {
     private String name, phone, password, image, address, email;

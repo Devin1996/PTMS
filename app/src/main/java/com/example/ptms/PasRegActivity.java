@@ -27,7 +27,6 @@ public class PasRegActivity extends AppCompatActivity {
 
     private EditText pasRegName;
     private EditText pasRegNo;
-    private EditText pasRegEmail;
     private EditText pasRegPwd;
     private EditText pasRegCpwd;
     private Button PasRegBtn;
@@ -55,7 +54,6 @@ public class PasRegActivity extends AppCompatActivity {
 
         pasRegName = (EditText) findViewById(R.id.pas_name);
         pasRegNo = (EditText) findViewById(R.id.pas_mobile_reg);
-        pasRegEmail = (EditText) findViewById(R.id.pas_email_reg);
         pasRegPwd = (EditText) findViewById(R.id.pas_pwd_reg);
         pasRegCpwd = (EditText) findViewById(R.id.pas_cpwd_reg);
         PasRegBtn = (Button) findViewById(R.id.register_btn);
@@ -170,15 +168,11 @@ public class PasRegActivity extends AppCompatActivity {
 private void CreateAccount() {
         String name = pasRegName.getText().toString();
         String phone= pasRegNo.getText().toString();
-    String email = pasRegEmail.getText().toString();
     String password = pasRegPwd.getText().toString();
     String confirmPassword = pasRegCpwd.getText().toString();
 
 
-    if (TextUtils.isEmpty(email)){
-        Toast.makeText(this, "Please enter your Email", Toast.LENGTH_SHORT).show();
-    }
-    else if (TextUtils.isEmpty(name)){
+    if (TextUtils.isEmpty(name)){
         Toast.makeText(this, "Please enter your Name", Toast.LENGTH_SHORT).show();
     }
     else if (TextUtils.isEmpty(phone)){
@@ -202,14 +196,14 @@ private void CreateAccount() {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-        ValidatephoneNumber(name, phone, email, password);
+        ValidatephoneNumber(name, phone, password);
 
 
     }
 
 }
 
-    private void ValidatephoneNumber(final String name,final String phone, final String email,final String password) {
+    private void ValidatephoneNumber(final String name,final String phone,final String password) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -220,7 +214,6 @@ private void CreateAccount() {
                 {
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     userdataMap.put("name",name);
-                    userdataMap.put("email",email);
                     userdataMap.put("phone",phone);
                     userdataMap.put("password",password);
 
@@ -250,7 +243,7 @@ private void CreateAccount() {
                 }
                 else
                 {
-                    Toast.makeText(PasRegActivity.this, "A account with " + email + " already exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasRegActivity.this, "A account with " + phone + " already exists", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(PasRegActivity.this, "Please try again using another Email", Toast.LENGTH_SHORT).show();
 
