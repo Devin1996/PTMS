@@ -92,10 +92,11 @@ public class PasMenuActivity extends AppCompatActivity {
                 myRef.setValue("Just Checking"+PassengerId);
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
-                        Toast.makeText(getApplicationContext(),"Home is Selected",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"nav_slideshow is Selected",Toast.LENGTH_LONG).show();
                         break;
                     case R.id.nav_gallery:
-                        Toast.makeText(getApplicationContext(),"nav_gallery is Selected",Toast.LENGTH_LONG).show();
+                        Intent timeScheduleIntent = new Intent(PasMenuActivity.this, TimeSchedulesActivity.class);
+                        startActivity(timeScheduleIntent);
                         break;
                     case R.id.nav_slideshow:
                         Toast.makeText(getApplicationContext(),"nav_slideshow is Selected",Toast.LENGTH_LONG).show();
