@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TimeSchedulesActivity"></activity>
+        <activity android:name=".BusRouteActivity"></activity>
+        <activity android:name=".TimeSchedulesActivity" />
         <activity
             android:name=".TimeScheduleActivity"
             android:label="@string/title_activity_time_schedule"
