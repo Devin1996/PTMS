@@ -10,13 +10,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="78dp"
         android:layout_margin="10dp"
         android:background="@color/colorPrimaryDark"
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/bus_route_no"
+            android:id="@+id/track_no_time_slot"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/bus_route_name"
+            android:id="@+id/from_time_slot"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/total_distance"
+            android:id="@+id/to_time_slot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -58,7 +58,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/avg_speed"
+            android:id="@+id/dep_time_slot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Total Distance"
+            android:textColor="@android:color/white"
+
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/arr_time_slot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -72,63 +88,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bus_type" />
 
-        <TextView
-            android:id="@+id/est_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center"
-            android:text="Estimated Time"
-            android:textColor="@android:color/white"
 
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avg_speed" />
-
-        <TextView
-            android:id="@+id/bus_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:gravity="center"
-            android:text="Type"
-            android:textColor="@android:color/white"
-
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_distance" />
-
-        <Button
-            android:id="@+id/tofrom"
-            android:layout_width="193dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="188dp"
-            android:layout_marginLeft="188dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:color/white"
-            android:text="Show The Time Schedules"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/est_time" />
-
-        <Button
-            android:id="@+id/fromto_brn"
-            android:layout_width="177dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:color/white"
-            android:text="Show The Time Schedules"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/est_time" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

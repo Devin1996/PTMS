@@ -99,7 +99,8 @@ public class PasMenuActivity extends AppCompatActivity {
                         startActivity(timeScheduleIntent);
                         break;
                     case R.id.nav_slideshow:
-                        Toast.makeText(getApplicationContext(),"nav_slideshow is Selected",Toast.LENGTH_LONG).show();
+                        Intent timeSlotIntent = new Intent(PasMenuActivity.this, TimeDisplayActivity.class);
+                        startActivity(timeSlotIntent);
                         break;
                     case R.id.nav_tools:
                         Toast.makeText(getApplicationContext(),"nav_tools is Selected",Toast.LENGTH_LONG).show();

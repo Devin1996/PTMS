@@ -63,12 +63,12 @@ public class TimeSchedulesActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull BusRouteViewHolder BusRouteViewHolder, int i, @NonNull final BusRoute BusRoute) {
 
-                BusRouteViewHolder.routeNo.setText(BusRoute.getRouteNo());
-                BusRouteViewHolder.routeName.setText(BusRoute.getRouteName());
-                BusRouteViewHolder.totalDistance.setText(BusRoute.getTotalDistance());
-                BusRouteViewHolder.busType.setText(BusRoute.getBusType());
-                BusRouteViewHolder.avgTime.setText(BusRoute.getAvgTime());
-                BusRouteViewHolder.avgSpeed.setText(BusRoute.getAvgSpeed());
+                BusRouteViewHolder.routeNo.setText("Route No:"+BusRoute.getRouteNo());
+                BusRouteViewHolder.routeName.setText("Name :"+BusRoute.getRouteName());
+                BusRouteViewHolder.totalDistance.setText("Distance :"+BusRoute.getTotalDistance()+"Km");
+                BusRouteViewHolder.busType.setText("Type :"+BusRoute.getBusType());
+                BusRouteViewHolder.avgTime.setText("Est Time :"+BusRoute.getAvgTime()+"hrs");
+                BusRouteViewHolder.avgSpeed.setText("Average Speed :"+BusRoute.getAvgSpeed()+"Kmph");
 
 
                 BusRouteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
