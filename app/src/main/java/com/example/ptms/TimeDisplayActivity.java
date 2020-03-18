@@ -78,7 +78,7 @@ public class TimeDisplayActivity extends AppCompatActivity {
                 BusTimeDisplayViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(TimeDisplayActivity.this, PasMenuActivity.class);
+                        Intent intent = new Intent(TimeDisplayActivity.this, AddToTravelPlansActivity.class);
                         intent.putExtra("timeSlotKey", BusTimeDisplay.getBusTimeKey());
                         startActivity(intent);
 
