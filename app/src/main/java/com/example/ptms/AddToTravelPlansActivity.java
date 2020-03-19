@@ -1,10 +1,6 @@
 package com.example.ptms;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +8,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ptms.Model.BusTimeDisplay;
@@ -25,7 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -92,25 +89,23 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
             datePickerDialog.show();
         }
         if (v== addToTravelPlanBtn){
-//
+
             addingToTravelPlans();
-//
-//            if (state.equals("Reserved") || state.equals("Not Reserved"))
-//            {
-//                Toast.makeText(AddToTravelPlansActivity.this, "You Add more Travel Plans, once you have completed previous tasks", Toast.LENGTH_LONG).show();
-//            }
-//            else
-//            {
-//                addingToTravelPlans();
-//            }
-//
+
+            if (state.equals("Reserved") || state.equals("Not Reserved")) {
+                Toast.makeText(AddToTravelPlansActivity.this, "You can Add more Travel Plans, once you have completed previous tasks", Toast.LENGTH_LONG).show();
+            } else {
+                addingToTravelPlans();
+            }
+
         }
     }
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        CheckOrderState();
-//    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        CheckOrderState();
+    }
 
 
     private void addingToTravelPlans() {
@@ -197,43 +192,36 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
         });
     }
 
-//    private void CheckOrderState()
-//    {
-//        DatabaseReference orderRef;
-//        orderRef = FirebaseDatabase.getInstance().getReference()
-//                .child("bookings")
-//                .child(Prevelent.currentOnlineUser.getPhone());
-//
-//        orderRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists())
-//                {
-//                    String shippingState = dataSnapshot.child("state").getValue().toString();
-//                    //String userName = dataSnapshot.child("name").getValue().toString();
-//                    if (shippingState.equals("Reserved"))
-//                    {
-//
-//                        state = "Reserved";
-//
-//                    }
-//                    else if (shippingState.equals("not shipped"))
-//                    {
-//                        state = "Not Reserved";
-//
-//                    }
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//    }
+    private void CheckOrderState() {
+        DatabaseReference orderRef;
+        orderRef = FirebaseDatabase.getInstance().getReference()
+                .child("bookings")
+                .child(Prevelent.currentOnlineUser.getPhone());
+
+        orderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String shippingState = dataSnapshot.child("state").getValue().toString();
+                    //String userName = dataSnapshot.child("name").getValue().toString();
+                    if (shippingState.equals("Reserved")) {
+
+                        state = "Reserved";
+
+                    } else if (shippingState.equals("not shipped")) {
+                        state = "Not Reserved";
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 
 }
