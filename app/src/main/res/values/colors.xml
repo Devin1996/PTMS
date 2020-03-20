@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#201D44</color>
     <color name="colorAccent">#5B92BD</color>
     <color name="colorbtn">#009688</color>
+
+    <color name="QRCodeWhiteColor">#ffffff</color>
+
+    <color name="QRCodeBlackColor">#000000</color>
 </resources>

@@ -100,8 +100,8 @@ public class PasMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_share:
-                        Intent settingsIntent = new Intent(PasMenuActivity.this, PassSettingsActivity.class);
-                        startActivity(settingsIntent);
+                        Intent scanQrIntent = new Intent(PasMenuActivity.this, ScanQrActivity.class);
+                        startActivity(scanQrIntent);
                         break;
 
                     case R.id.nav_send:
