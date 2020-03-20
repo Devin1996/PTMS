@@ -1,54 +1,99 @@
 package com.example.ptms.Model;
 
 public class Book {
-    private String bookingDate, bookigFrom, bookingTo, bookingArrTime, bookingDepTime;
-    private int noOfSeats;
+    private String bookedDate, arrTime, date, depTime, from, numberOfSeats, time, timeSlotKey, to, trackNo;
 
-    public String getBookingDate() {
-        return bookingDate;
+    public Book(String bookedDate, String arrTime, String date, String depTime, String from, String numberOfSeats, String time, String timeSlotKey, String to, String trackNo) {
+        this.bookedDate = bookedDate;
+        this.arrTime = arrTime;
+        this.date = date;
+        this.depTime = depTime;
+        this.from = from;
+        this.numberOfSeats = numberOfSeats;
+        this.time = time;
+        this.timeSlotKey = timeSlotKey;
+        this.to = to;
+        this.trackNo = trackNo;
     }
 
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
+
+    public String getBookedDate() {
+        return bookedDate;
     }
 
-    public String getBookigFrom() {
-        return bookigFrom;
+    public void setBookedDate(String bookedDate) {
+        this.bookedDate = bookedDate;
     }
 
-    public void setBookigFrom(String bookigFrom) {
-        this.bookigFrom = bookigFrom;
+    public String getArrTime() {
+        return arrTime;
     }
 
-    public String getBookingTo() {
-        return bookingTo;
+    public void setArrTime(String arrTime) {
+        this.arrTime = arrTime;
     }
 
-    public void setBookingTo(String bookingTo) {
-        this.bookingTo = bookingTo;
+    public String getDate() {
+        return date;
     }
 
-    public String getBookingArrTime() {
-        return bookingArrTime;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setBookingArrTime(String bookingArrTime) {
-        this.bookingArrTime = bookingArrTime;
+    public String getDepTime() {
+        return depTime;
     }
 
-    public String getBookingDepTime() {
-        return bookingDepTime;
+    public void setDepTime(String depTime) {
+        this.depTime = depTime;
     }
 
-    public void setBookingDepTime(String bookingDepTime) {
-        this.bookingDepTime = bookingDepTime;
+    public String getFrom() {
+        return from;
     }
 
-    public int getNoOfSeats() {
-        return noOfSeats;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    public void setNoOfSeats(int noOfSeats) {
-        this.noOfSeats = noOfSeats;
+    public String getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(String numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTimeSlotKey() {
+        return timeSlotKey;
+    }
+
+    public void setTimeSlotKey(String timeSlotKey) {
+        this.timeSlotKey = timeSlotKey;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getTrackNo() {
+        return trackNo;
+    }
+
+    public void setTrackNo(String trackNo) {
+        this.trackNo = trackNo;
     }
 }

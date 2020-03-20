@@ -1,14 +1,33 @@
 package com.example.ptms;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ptms.Model.Book;
+import com.example.ptms.Prevelent.Prevelent;
+import com.example.ptms.ViewHolder.BookViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MyTravelPlansActivity extends AppCompatActivity {
 
@@ -48,148 +67,141 @@ public class MyTravelPlansActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        CheckOrderState();
-//
-//        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("bookingList");
-//
-//        FirebaseRecyclerOptions<Book> options =
-//                new FirebaseRecyclerOptions.Builder<Book>()
-//                        .setQuery(cartListRef.child("passengerBookingView")
-//                                .child(Prevelent.currentOnlineUser.getPhone())
-//                                .child("busBooking"), Book.class)
-//                        .build();
-//
-//        FirebaseRecyclerAdapter<Book, BookViewHolder> adapter
-//                = new FirebaseRecyclerAdapter<Book, BookViewHolder>(options) {
-//            @Override
-//            protected void onBindViewHolder(@NonNull BookViewHolder holder, int position, @NonNull final Book model) {
-//
-//                holder.txtProductQuantity.setText("Quantitiy = "+ model.getQuantity());
-//                holder.txtProductPrice.setText("Price $ "+model.getPrice());
-//                holder.txtProductName.setText(model.getPname());
-//
-//                int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice())))*Integer.valueOf(model.getQuantity());
-//                overTotalPrice = overTotalPrice+oneTyprProductTPrice;
-//
-//
-//                holder.itemView.setOnClickListener( new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        CharSequence options[] = new CharSequence[]
-//                                {
-//                                        "Edit",
-//                                        "Remove"
-//                                };
-//
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-//                        builder.setTitle("Cart Options");
-//
-//                        builder.setItems(options, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                if (which == 0)
-//                                {
-//                                    Intent intent= new Intent(CartActivity.this, ProductDetailsActivity.class);
-//                                    intent.putExtra("pid", model.getPid());
-//                                    startActivity(intent);
-//
-//                                }
-//                                if (which==1)
-//                                {
-//                                    cartListRef.child("User View")
-//                                            .child(Prevelent.currentOnlineUser.getPhone())
-//                                            .child("Products")
-//                                            .child(model.getPid())
-//                                            .removeValue()
-//                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                                @Override
-//                                                public void onComplete(@NonNull Task<Void> task) {
-//                                                    if (task.isSuccessful())
-//                                                    {
-//                                                        Toast.makeText(CartActivity.this, "Item removed", Toast.LENGTH_SHORT).show();
-//
-//                                                        Intent intent= new Intent(CartActivity.this, HomeActivity.class);
-//                                                        startActivity(intent);
-//                                                    }
-//                                                }
-//                                            });
-//                                }
-//
-//                            }
-//                        });
-//                        builder.show();
-//                    }
-//                });
-//
-//            }
-//
-//            @NonNull
-//            @Override
-//            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-//                //return null;
-//                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cart_items_layout, viewGroup, false);
-//                CartViewHolder holder = new CartViewHolder(view);
-//                return holder;
-//
-//            }
-//        };
-//
-//        recyclerView.setAdapter(adapter);
-//        adapter.startListening();
-//    }
-//
-//    private void CheckOrderState()
-//    {
-//        DatabaseReference orderRef;
-//        orderRef = FirebaseDatabase.getInstance().getReference()
-//                .child("Orders")
-//                .child(Prevalent.currentOnlineUser.getPhone());
-//
-//        orderRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists())
-//                {
-//                    String shippingState = dataSnapshot.child("state").getValue().toString();
-//                    String userName = dataSnapshot.child("name").getValue().toString();
-//                    if (shippingState.equals("shipped"))
-//                    {
-//                        txtTotalAmount.setText("Dear" +userName+ "\n book is shipped ");
-//                        recyclerView.setVisibility(View.GONE);
-//
-//                        txtMsg1.setVisibility(View.VISIBLE);
-//                        txtMsg1.setText("Your ordred book will be recieved as soon as possible");
-//
-//                        NextProcessBtn.setVisibility(View.GONE);
-//
-//                        Toast.makeText(CartActivity.this, "You can buy more Books", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                    else if (shippingState.equals("not shipped"))
-//                    {
-//                        txtTotalAmount.setText("Shipping State = Not Shipped");
-//                        recyclerView.setVisibility(View.GONE);
-//
-//                        txtMsg1.setVisibility(View.VISIBLE);
-//                        NextProcessBtn.setVisibility(View.GONE);
-//
-//                        Toast.makeText(CartActivity.this, "You can buy more Books", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        CheckOrderState();
+
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("bookingList");
+
+        FirebaseRecyclerOptions<Book> options =
+                new FirebaseRecyclerOptions.Builder<Book>()
+                        .setQuery(cartListRef.child("passengerBookingView")
+                                .child(Prevelent.currentOnlineUser.getPhone())
+                                .child("busBooking"), Book.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<Book, BookViewHolder> adapter
+                = new FirebaseRecyclerAdapter<Book, BookViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull BookViewHolder holder, int position, @NonNull final Book model) {
+
+                holder.txtBookDate.setText("Booked Date : " + model.getBookedDate());
+                holder.txtBookNoOfSeats.setText("No of Seats : " + model.getNumberOfSeats());
+                holder.txtBookarrTime.setText("Arrival Time : " + model.getArrTime());
+                holder.txtBookDepTime.setText("Departure Time : " + model.getDepTime());
+                holder.txtBookFrom.setText("From : " + model.getFrom());
+                holder.txtBookTo.setText("To : " + model.getTo());
+
+                //int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice())))*Integer.valueOf(model.getQuantity());
+                //overTotalPrice = overTotalPrice+oneTyprProductTPrice;
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CharSequence options[] = new CharSequence[]
+                                {
+                                        "Edit",
+                                        "Remove"
+                                };
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MyTravelPlansActivity.this);
+                        builder.setTitle("Cart Options");
+
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (which == 0) {
+                                    Intent intent = new Intent(MyTravelPlansActivity.this, AddToTravelPlansActivity.class);
+                                    intent.putExtra("pid", model.getTimeSlotKey());
+                                    startActivity(intent);
+
+                                }
+                                if (which == 1) {
+                                    cartListRef.child("User View")
+                                            .child(Prevelent.currentOnlineUser.getPhone())
+                                            .child("Products")
+                                            .child(model.getTimeSlotKey())
+                                            .removeValue()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(MyTravelPlansActivity.this, "Item removed", Toast.LENGTH_SHORT).show();
+
+                                                        Intent intent = new Intent(MyTravelPlansActivity.this, PasMenuActivity.class);
+                                                        startActivity(intent);
+                                                    }
+                                                }
+                                            });
+                                }
+
+                            }
+                        });
+                        builder.show();
+                    }
+                });
+
+            }
+
+            @NonNull
+            @Override
+            public BookViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                //return null;
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_travel_plans, viewGroup, false);
+                BookViewHolder holder = new BookViewHolder(view);
+                return holder;
+
+            }
+        };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    private void CheckOrderState() {
+        DatabaseReference orderRef;
+        orderRef = FirebaseDatabase.getInstance().getReference()
+                .child("Orders")
+                .child(Prevelent.currentOnlineUser.getPhone());
+
+        orderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String shippingState = dataSnapshot.child("state").getValue().toString();
+                    String userName = dataSnapshot.child("name").getValue().toString();
+                    if (shippingState.equals("shipped")) {
+                        txtTotalAmount.setText("Dear" + userName + "\n book is shipped ");
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        txtMsg1.setText("Your ordred book will be recieved as soon as possible");
+
+                        NextProcessBtn.setVisibility(View.GONE);
+
+                        Toast.makeText(MyTravelPlansActivity.this, "You can buy more Books", Toast.LENGTH_SHORT).show();
+
+                    } else if (shippingState.equals("not shipped")) {
+                        txtTotalAmount.setText("Shipping State = Not Shipped");
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        NextProcessBtn.setVisibility(View.GONE);
+
+                        Toast.makeText(MyTravelPlansActivity.this, "You can buy more Books", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 }
