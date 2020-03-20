@@ -208,7 +208,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
 
                         state = "Reserved";
 
-                    } else if (shippingState.equals("not shipped")) {
+                    } else if (shippingState.equals("Not Reserved")) {
                         state = "Not Reserved";
 
                     }

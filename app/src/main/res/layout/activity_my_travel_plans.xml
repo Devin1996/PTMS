@@ -8,15 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlll"
-        android:layout_width="421dp"
-        android:layout_height="50dp"
+        android:layout_width="410dp"
+        android:layout_height="47dp"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="2dp"
 
         android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/cart_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/my_travel_plan_list"
+        app:layout_constraintStart_toStartOf="@+id/my_travel_plan_list"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
@@ -40,7 +38,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/travel_list"
+        android:id="@+id/my_travel_plan_listss"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_above="@+id/next_process_btn"
@@ -57,17 +55,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
 
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="7dp"
         android:background="@color/colorPrimaryDark"
         android:text="Next"
         android:textColor="@android:color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/travel_list"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

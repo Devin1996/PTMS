@@ -16,6 +16,8 @@ public class Book {
         this.trackNo = trackNo;
     }
 
+    public Book() {
+    }
 
     public String getBookedDate() {
         return bookedDate;
