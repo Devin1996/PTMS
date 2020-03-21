@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,8 @@ public class PasMenuActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Boolean currentLogOutPasStatus= false;
 
+    private Button myTravelPlansBtn, timeSchedulesBtn, onBoardBtn, nearByBtn, newBookbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +60,54 @@ public class PasMenuActivity extends AppCompatActivity {
                 startActivity(myTravelPlansIntents);
             }
         });
+
+        myTravelPlansBtn = (Button) findViewById(R.id.btn_home_travel_plans);
+        newBookbtn = (Button) findViewById(R.id.btn_home_book_new);
+        onBoardBtn = (Button) findViewById(R.id.btn_home_on_board);
+        timeSchedulesBtn = (Button) findViewById(R.id.btn_home_time_schedules);
+        nearByBtn = (Button) findViewById(R.id.btn_home_on_near_by_journey);
+
+        myTravelPlansBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, MyTravelPlansActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
+
+        newBookbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, TimeDisplayActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
+
+        timeSchedulesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, TimeSchedulesActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
+
+        onBoardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, ScanQrActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
+
+        nearByBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, PassengerMapActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
+
+
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

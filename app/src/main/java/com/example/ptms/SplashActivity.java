@@ -1,9 +1,9 @@
 package com.example.ptms;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
                 try{
-                    sleep(7000);
+                    sleep(5000);
                 }
                 catch(Exception e){
                     e.printStackTrace();
