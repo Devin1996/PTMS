@@ -20,7 +20,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import io.paperdb.Paper;
 
@@ -131,9 +130,9 @@ public class PasMenuActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
-                myRef.setValue("Just Checking"+PassengerId);
+                //FirebaseDatabase database = FirebaseDatabase.getInstance();
+                //DatabaseReference myRef = database.getReference("message");
+                //myRef.setValue("Just Checking"+PassengerId);
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(),"nav_slideshow is Selected",Toast.LENGTH_LONG).show();
@@ -147,7 +146,8 @@ public class PasMenuActivity extends AppCompatActivity {
                         startActivity(timeSlotIntent);
                         break;
                     case R.id.nav_tools:
-                        Toast.makeText(getApplicationContext(),"nav_tools is Selected",Toast.LENGTH_LONG).show();
+                        Intent settingsIntent = new Intent(PasMenuActivity.this, PassSettingsActivity.class);
+                        startActivity(settingsIntent);
                         break;
 
                     case R.id.nav_share:
@@ -160,9 +160,8 @@ public class PasMenuActivity extends AppCompatActivity {
                         Paper.book().destroy();
 
                         Intent logoutIntent = new Intent(PasMenuActivity.this, PasMainActivity.class);
-                        logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        //logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(logoutIntent);
-                        finish();
                         break;
                 }
                 drawer.closeDrawers();
