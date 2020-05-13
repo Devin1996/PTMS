@@ -8,8 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp">
 
 
         <Button
@@ -48,6 +49,15 @@
             android:id="@+id/tv_qr_readTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/confirmbtntoQR"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tv_qr_readTxt"
+            android:text="Report Issue"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
 
 
     </LinearLayout>

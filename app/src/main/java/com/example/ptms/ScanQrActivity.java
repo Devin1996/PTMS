@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -26,6 +28,7 @@ public class ScanQrActivity extends AppCompatActivity {
     ImageView imageView;
     Button button;
     Button btnScan;
+    Button confirmBtntoQR;
     EditText editText;
     String EditTextValue;
     Thread thread;
@@ -38,10 +41,12 @@ public class ScanQrActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_scan_qr);
+
         imageView = (ImageView) findViewById(R.id.imageView);
         editText = (EditText) findViewById(R.id.editText);
         button = (Button) findViewById(R.id.button);
         btnScan = (Button) findViewById(R.id.btnScan);
+        confirmBtntoQR = (Button) findViewById(R.id.confirmbtntoQR);
         tv_qr_readTxt = (TextView) findViewById(R.id.tv_qr_readTxt);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +86,19 @@ public class ScanQrActivity extends AppCompatActivity {
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
 
+
             }
         });
+
+        confirmBtntoQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pushValue();
+                Intent intent = new Intent(ScanQrActivity.this, PasMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -138,5 +154,15 @@ public class ScanQrActivity extends AppCompatActivity {
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void pushValue() {
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("QR");
+
+        myRef.setValue(tv_qr_readTxt.getText().toString());
+        //myRef.setValue("Scanning My Qr code");
+        //travelPlanMap.put("from", fromCity.getText().toString());
     }
 }
