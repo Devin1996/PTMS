@@ -146,12 +146,12 @@ public class PasMenuActivity extends AppCompatActivity {
                         startActivity(timeSlotIntent);
                         break;
                     case R.id.nav_tools:
-                        Intent settingsIntent = new Intent(PasMenuActivity.this, PassSettingsActivity.class);
+                        Intent settingsIntent = new Intent(PasMenuActivity.this, OnBoardActivity.class);
                         startActivity(settingsIntent);
                         break;
 
                     case R.id.nav_share:
-                        Intent scanQrIntent = new Intent(PasMenuActivity.this, ScanQrActivity.class);
+                        Intent scanQrIntent = new Intent(PasMenuActivity.this, PassSettingsActivity.class);
                         startActivity(scanQrIntent);
                         break;
 

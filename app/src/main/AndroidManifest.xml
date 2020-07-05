@@ -20,7 +20,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanQrActivity"></activity>
+        <activity android:name=".ReportBusActivity"></activity>
+        <activity android:name=".ReviewBusActivity" />
+        <activity android:name=".AskHelpActivity" />
+        <activity android:name=".OnBoardActivity" />
+        <activity android:name=".OnBoardActivityActivity" />
+        <activity android:name=".BusReportActivity" />
+        <activity android:name=".ScanQrActivity" />
         <activity android:name=".ConfirmFinalBooking" />
         <activity android:name=".MyTravelPlansActivity" />
         <activity android:name=".DateTimeActivity" />
