@@ -28,13 +28,13 @@ public class ReportBusActivity extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.textView);
 
 
-        Bundle b = intent.getExtras();
-
-        if(b!=null)
-        {
-            String j =(String) b.get("message");
-            tv.setText(j);
-        }
+        //Bundle b = intent.getExtras();
+//
+//        if(b!=null)
+//        {
+//            String j =(String) b.get("message");
+//            tv.setText(j);
+//        }
 
         reportConfirmBtn =(Button) findViewById(R.id.reprt_confirm_btn);
         cancelBtn = (Button) findViewById(R.id.cancel_report_btn);
