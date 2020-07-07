@@ -23,7 +23,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class OnBoardActivity extends AppCompatActivity {
-
+    public static final String EXTRA_TEXT = "com.example.ptms.EXTRA_TEXT";
     public final static int QRcodeWidth = 350;
     TextView tv_qr_readTxt;
     Button scanQrBtn;
@@ -61,7 +61,9 @@ public class OnBoardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //pushValue();
+                String busDetail = tv_qr_readTxt.getText().toString();
                 Intent intent = new Intent(OnBoardActivity.this, ReportBusActivity.class);
+                intent.putExtra(EXTRA_TEXT,busDetail );
                 startActivity(intent);
             }
         });
@@ -69,10 +71,9 @@ public class OnBoardActivity extends AppCompatActivity {
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pushValue();
                 String busDetail = tv_qr_readTxt.getText().toString();
                 Intent intent = new Intent(OnBoardActivity.this, ReviewBusActivity.class);
-                intent.putExtra("message", busDetail);
+                intent.putExtra(EXTRA_TEXT,busDetail );
                 startActivity(intent);
             }
         });

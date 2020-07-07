@@ -6,135 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ReportBusActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careless_btn" />
+
     <Button
         android:id="@+id/reprt_confirm_btn"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="97dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:text="Report Issue"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_report_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/violence_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="21dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Violence"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/high_speed_btn"
-        app:layout_constraintEnd_toStartOf="@+id/high_noise_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/high_noise_btn"
-        android:layout_width="0dp"
-        android:layout_height="109dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="High Noise"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/violence_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/violence_btn" />
-
-    <Button
-        android:id="@+id/high_speed_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="22dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="High Speed"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/inappropriate_btn"
-        app:layout_constraintEnd_toStartOf="@+id/careless_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/violence_btn" />
-
-    <Button
-        android:id="@+id/inappropriate_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Inappropriate Content Display"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/other_report_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/high_speed_btn" />
-
-    <Button
-        android:id="@+id/other_report_btn"
-        android:layout_width="0dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Other"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inappropriate_btn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/careless_btn"
-        android:layout_width="0dp"
-        android:layout_height="109dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Careless"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/high_speed_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/high_speed_btn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancel_report_btn"
@@ -142,9 +45,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="27dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:text="Cancel"
@@ -159,16 +63,78 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="88dp"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="19dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="140dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/reprt_confirm_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/reprt_confirm_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/violence_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
+        android:text="violence_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/high_noise_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="high_noise_btn"
+        app:layout_constraintStart_toStartOf="@+id/violence_btn"
+        app:layout_constraintTop_toBottomOf="@+id/violence_btn" />
+
+    <CheckBox
+        android:id="@+id/high_speed_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:text="high_speed_btn"
+        app:layout_constraintStart_toStartOf="@+id/high_noise_btn"
+        app:layout_constraintTop_toBottomOf="@+id/high_noise_btn" />
+
+    <CheckBox
+        android:id="@+id/careless_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="29dp"
+        android:text="careless_btn"
+        app:layout_constraintStart_toStartOf="@+id/inappropriate_btn"
         app:layout_constraintTop_toBottomOf="@+id/inappropriate_btn" />
+
+    <CheckBox
+        android:id="@+id/inappropriate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="inappropriate_btn"
+        app:layout_constraintStart_toStartOf="@+id/other_report_btn"
+        app:layout_constraintTop_toBottomOf="@+id/other_report_btn" />
+
+    <CheckBox
+        android:id="@+id/other_report_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="37dp"
+        android:text="other_report_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
