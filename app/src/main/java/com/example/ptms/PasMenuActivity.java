@@ -101,7 +101,7 @@ public class PasMenuActivity extends AppCompatActivity {
         nearByBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, PassengerMapActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, SpinnerTestActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });

@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReportBusActivity"></activity>
+        <activity android:name=".SpinnerTestActivity"></activity>
+        <activity android:name=".Search4BookActivity" />
+        <activity android:name=".ReportBusActivity" />
         <activity android:name=".ReviewBusActivity" />
         <activity android:name=".AskHelpActivity" />
         <activity android:name=".OnBoardActivity" />
