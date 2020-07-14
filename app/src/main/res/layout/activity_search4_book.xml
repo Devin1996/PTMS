@@ -12,8 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Firebase Search"
+        android:layout_marginTop="20dp"
+        android:text="Time Slot Search"
         android:textColor="#555555"
         android:textSize="24sp"
         android:layout_alignParentLeft="true" />
@@ -25,11 +25,11 @@
         android:layout_alignStart="@+id/heading_label"
         android:layout_below="@+id/heading_label"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_toStartOf="@+id/search_btn"
         android:background="@drawable/search_layout"
         android:ems="10"
-        android:hint="Search here"
+        android:hint="From"
         android:inputType="textPersonName"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
@@ -49,14 +49,15 @@
         android:layout_alignTop="@+id/search_field"
         android:layout_marginRight="30dp"
         android:background="@android:color/background_light"
-        app:srcCompat="@drawable/search_button"
-        android:layout_alignParentRight="true" />
+        app:srcCompat="@drawable/sea"
+        android:layout_alignParentRight="true"
+        tools:ignore="VectorDrawableCompat" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/result_list"
+        android:id="@+id/result_list12"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/search_field"
-        android:layout_marginTop="50dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

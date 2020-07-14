@@ -1,7 +1,7 @@
 package com.example.ptms.Model;
 
 public class BusTimeDisplay {
-    private String arrTime,busTimeKey,depTime,from,routeRegNo,to,trackNo;
+    private String arrTime, busTimeKey, depTime, from, routeRegNo, to, trackNo, rideNo;
 
     public BusTimeDisplay(String arrTime, String busTimeKey, String depTime, String from, String routeRegNo, String to, String trackNo) {
         this.arrTime = arrTime;
@@ -13,8 +13,24 @@ public class BusTimeDisplay {
         this.trackNo = trackNo;
     }
 
+    public BusTimeDisplay(String arrTime, String depTime, String from, String to, String rideNo) {
+        this.arrTime = arrTime;
+        this.depTime = depTime;
+        this.from = from;
+        this.to = to;
+        this.rideNo = rideNo;
+    }
+
     public BusTimeDisplay() {
 
+    }
+
+    public String getRideNo() {
+        return rideNo;
+    }
+
+    public void setRideNo(String rideNo) {
+        this.rideNo = rideNo;
     }
 
     public String getBusTimeKey() {
