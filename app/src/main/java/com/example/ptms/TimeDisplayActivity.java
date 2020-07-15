@@ -54,9 +54,9 @@ public class TimeDisplayActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         arrayList = new ArrayList<BusTimeDisplay>();
 
-        busTimeSlotDBRef = FirebaseDatabase.getInstance().getReference().child("timeSlots");
+        busTimeSlotDBRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes");
         busTimeSlotDBRef.keepSynced(true);
-        options = new FirebaseRecyclerOptions.Builder<BusTimeDisplay>().setQuery(busTimeSlotDBRef.child("busTime"), BusTimeDisplay.class).build();
+        options = new FirebaseRecyclerOptions.Builder<BusTimeDisplay>().setQuery(busTimeSlotDBRef.child("busTimeDislpay"), BusTimeDisplay.class).build();
 
 
 

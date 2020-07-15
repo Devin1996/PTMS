@@ -37,7 +37,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
 
     private Button addToTravelPlanBtn,btnDatePicker;
     private ElegantNumberButton numberSeatsButton;
-    private TextView fromCity, toCity, arrivalTime, departureTime, trackNo;
+    private TextView fromCity, toCity, arrivalTime, departureTime, rideNo;
     private String timeSlotKey = "", state="Normal";
 
 
@@ -56,7 +56,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
         toCity=(TextView)findViewById(R.id.to_add_to_travel_plans);
         arrivalTime=(TextView)findViewById(R.id.arr_add_to_travel_plans);
         departureTime=(TextView)findViewById(R.id.dep_add_to_travel_plans);
-        trackNo=(TextView)findViewById(R.id.track_no_add_to_travel_plans);
+        rideNo=(TextView)findViewById(R.id.track_no_add_to_travel_plans);
         numberSeatsButton=(ElegantNumberButton)findViewById(R.id.no_seats_btn);
 
         getTimeSlotDetails(timeSlotKey);
@@ -127,7 +127,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
         travelPlanMap.put("to", toCity.getText().toString());
         travelPlanMap.put("arrTime", arrivalTime.getText().toString());
         travelPlanMap.put("depTime", departureTime.getText().toString());
-        travelPlanMap.put("trackNo", trackNo.getText().toString());
+        travelPlanMap.put("rideNo", rideNo.getText().toString());
         travelPlanMap.put("date", saveCurrentDate);
         travelPlanMap.put("time", saveCurrentTime);
         travelPlanMap.put("numberOfSeats", numberSeatsButton.getNumber());
@@ -166,7 +166,8 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
 
     }
     private void getTimeSlotDetails(String timeSlotKey) {
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes").child("busTimeDislpay");
+        //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes").child("busTimeDislpay");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
 
         productsRef.child(timeSlotKey).addValueEventListener(new ValueEventListener() {
             @Override
@@ -175,11 +176,11 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
                 {
                     BusTimeDisplay products = dataSnapshot.getValue(BusTimeDisplay.class);
 
-                    fromCity.setText(products.getFrom().toUpperCase());
-                    toCity.setText(products.getTo().toUpperCase());
-                    arrivalTime.setText(products.getArrTime());
-                    departureTime.setText(products.getDepTime());
-                    trackNo.setText(products.getTrackNo());
+                    fromCity.setText("From : "+products.getFrom().toUpperCase());
+                    toCity.setText("To : "+products.getTo().toUpperCase());
+                    arrivalTime.setText("Arrival Time : "+products.getArrTime());
+                    departureTime.setText("Departure Time : "+products.getDepTime());
+                    rideNo.setText("Ride No : "+products.getRideNo());
 
                 }
             }

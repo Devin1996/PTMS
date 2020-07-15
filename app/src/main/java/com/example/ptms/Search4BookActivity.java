@@ -37,6 +37,7 @@ public class Search4BookActivity extends AppCompatActivity {
 
     private DatabaseReference mTimeDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -90,8 +91,8 @@ public class Search4BookActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view)
                             {
-                                Intent intent = new Intent(Search4BookActivity.this, PasMenuActivity.class);
-                                //intent.putExtra("pid", model.getPid());
+                                Intent intent = new Intent(Search4BookActivity.this, AddToTravelPlansActivity.class);
+                                intent.putExtra("timeSlotKey", model.getBusTimeKey());
                                 startActivity(intent);
                             }
                         });

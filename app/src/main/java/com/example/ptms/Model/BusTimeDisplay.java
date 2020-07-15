@@ -21,6 +21,15 @@ public class BusTimeDisplay {
         this.rideNo = rideNo;
     }
 
+    public BusTimeDisplay(String arrTime , String busTimeKey , String depTime , String from , String to , String rideNo) {
+        this.arrTime = arrTime;
+        this.busTimeKey = busTimeKey;
+        this.depTime = depTime;
+        this.from = from;
+        this.to = to;
+        this.rideNo = rideNo;
+    }
+
     public BusTimeDisplay() {
 
     }
