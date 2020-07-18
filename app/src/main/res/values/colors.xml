@@ -3,7 +3,12 @@
     <color name="colorPrimary">#575A61</color>
     <color name="colorPrimaryDark">#59585C</color>
     <color name="colorAccent">#989A9C</color>
-    <color name="colorbtn">#434E4D</color>
+    <color name="colorbtn">#434E4D</color> 
+
+    <color name="color1">#424549</color>
+    <color name="color2">#7e455e</color>
+    <color name="color3">#796e25</color>
+    <color name="color4">#59717c</color>
 
     <color name="QRCodeWhiteColor">#ffffff</color>
 
