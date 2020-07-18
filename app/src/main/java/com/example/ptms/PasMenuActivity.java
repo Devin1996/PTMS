@@ -88,7 +88,7 @@ public class PasMenuActivity extends AppCompatActivity {
         newBookbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, TimeDisplayActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, Search4BookActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -104,7 +104,7 @@ public class PasMenuActivity extends AppCompatActivity {
         onBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, SwipeViewActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, OnBoardActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -181,10 +181,10 @@ public class PasMenuActivity extends AppCompatActivity {
         });
 
         models = new ArrayList<>();
-        models.add(new Promotion(R.drawable.brochure, "Brchure","dkldldkdekd"));
-        models.add(new Promotion(R.drawable.sticker, "sticker","dkldldkdekd"));
-        models.add(new Promotion(R.drawable.poster, "poster","dkldldkdekd"));
-        models.add(new Promotion(R.drawable.namecard, "namecard","dkldldkdekd"));
+        models.add(new Promotion(R.drawable.kandy, "Upcountry","Sri Lanka's Up Country is the island at its most scenic, a mist-wrapped land of emerald peaks."));
+        models.add(new Promotion(R.drawable.galle, "Visit DownSouth","So you keep hearing the Down South of Sri Lanka is amazing, then you must visit."));
+        models.add(new Promotion(R.drawable.colombo, "Capital","Colombo, gateway to the wonder of Sri Lanka, boasts a rich colonial heritage."));
+        models.add(new Promotion(R.drawable.sigiriya, "Ancient Kingdom","Visit Ancient Capital cities where ancient rulers ruled the Country for years"));
 
         adapter = new PromotionAdapter(models,this);
 

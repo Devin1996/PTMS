@@ -19,11 +19,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo5" />
+        app:srcCompat="@drawable/greylogo" />
 
     <EditText
         android:id="@+id/Pas_login_no"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginlogo"
 
@@ -47,15 +47,15 @@
 
     <EditText
         android:id="@+id/Pas_login_pwd"
-        android:layout_width="388dp"
-        android:layout_height="61dp"
-        android:layout_below="@id/Pas_login_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="11dp"
+        android:layout_below="@id/Pas_login_no"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="17dp"
         android:background="@drawable/input_design"
         android:hint=" Password"
         android:inputType="textPassword"

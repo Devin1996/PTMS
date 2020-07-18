@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/app_slogan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo5" />
+        app:srcCompat="@drawable/greylogo" />
 
     <TextView
         android:id="@+id/app_slogan"

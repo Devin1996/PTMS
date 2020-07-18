@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash2"
+    android:background="@drawable/splash2grey"
     tools:context=".SplashActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="109dp"
         android:layout_marginTop="245dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/logo5"
+        android:src="@drawable/greylogo"
         app:layout_constraintBottom_toTopOf="@+id/textViewVersion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Devin Chandula for the Final Year Project"
+        android:text="M A D C De Silva"
         android:textColor="#D0B6B1B1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
