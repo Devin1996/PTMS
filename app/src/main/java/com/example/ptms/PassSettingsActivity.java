@@ -161,6 +161,7 @@ public class PassSettingsActivity extends AppCompatActivity {
 
     private void uploadImage() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Update Profile");
         progressDialog.setMessage("Please wait, while we are updating your account information");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();

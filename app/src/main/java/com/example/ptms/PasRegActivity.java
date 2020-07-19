@@ -229,7 +229,7 @@ private void CreateAccount() {
                                         Toast.makeText(PasRegActivity.this, "Congratulations, you account has been created ", Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
 
-                                        Intent intent = new Intent(PasRegActivity.this, PasMenuActivity.class);
+                                        Intent intent = new Intent(PasRegActivity.this, PasLoginActivity.class);
                                         startActivity(intent);
                                         //finish();
                                     }

@@ -175,7 +175,9 @@ public class PasMenuActivity extends AppCompatActivity {
 
                         Intent logoutIntent = new Intent(PasMenuActivity.this , PasMainActivity.class);
                         //logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(logoutIntent);
+                        finish();
                         break;
                 }
                 drawer.closeDrawers();
