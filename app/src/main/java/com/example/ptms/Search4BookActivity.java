@@ -31,9 +31,9 @@ import com.google.firebase.database.Query;
 public class Search4BookActivity extends AppCompatActivity {
 
     private ImageButton SearchBtn;
-    private EditText inputText;
+    private EditText inputText,toInputText;
     private RecyclerView searchList;
-    private String SearchInput;
+    private String SearchInput,SearchToInput;
 
     private DatabaseReference mTimeDatabase;
 
@@ -46,6 +46,7 @@ public class Search4BookActivity extends AppCompatActivity {
 
 
         inputText = findViewById(R.id.search_field);
+        toInputText = findViewById(R.id.search_to_field_123);
         SearchBtn = findViewById(R.id.search_btn);
         searchList = findViewById(R.id.result_list12);
         searchList.setLayoutManager(new LinearLayoutManager(Search4BookActivity.this));
@@ -55,7 +56,8 @@ public class Search4BookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                SearchInput = inputText.getText().toString();
+                SearchInput = inputText.getText().toString().toLowerCase()+toInputText.getText().toString();
+                //SearchToInput = ;
 
                 onStart();
             }
@@ -73,7 +75,9 @@ public class Search4BookActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<BusTimeDisplay> options =
                 new FirebaseRecyclerOptions.Builder<BusTimeDisplay>()
-                        .setQuery(reference.orderByChild("from").startAt(SearchInput).endAt(SearchInput + "\uf8ff"), BusTimeDisplay.class)
+                        .setQuery(reference.orderByChild("searchkey").startAt(SearchInput).endAt(SearchInput + "\uf8ff")
+                                //.orderByChild("to").startAt(SearchToInput).endAt(SearchToInput + "\uf8ff")
+                                ,BusTimeDisplay.class)
                         .build();
 
         FirebaseRecyclerAdapter<BusTimeDisplay, BusTimeDisplayViewHolder2> adapter =
@@ -111,4 +115,6 @@ public class Search4BookActivity extends AppCompatActivity {
         searchList.setAdapter(adapter);
         adapter.startListening();
     }
+
+
 }
