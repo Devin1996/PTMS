@@ -156,7 +156,7 @@ public class PasMenuActivity extends AppCompatActivity {
                         startActivity(timeScheduleIntent);
                         break;
                     case R.id.nav_slideshow:
-                        Intent timeSlotIntent = new Intent(PasMenuActivity.this , TimeDisplayActivity.class);
+                        Intent timeSlotIntent = new Intent(PasMenuActivity.this , Search4BookActivity.class);
                         startActivity(timeSlotIntent);
                         break;
                     case R.id.nav_tools:

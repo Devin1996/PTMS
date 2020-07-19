@@ -77,7 +77,7 @@ public class TimeDisplayActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(TimeDisplayActivity.this, AddToTravelPlansActivity.class);
-                        intent.putExtra("timeSlotKey", BusTimeDisplay.getBusTimeKey());
+                        intent.putExtra("timeSlotKey", BusTimeDisplay.getTimeSlotKey());
                         startActivity(intent);
 
 

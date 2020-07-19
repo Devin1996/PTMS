@@ -32,7 +32,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
         View.OnClickListener {
 
 
-    private EditText txtDate;
+    private TextView txtDate;
     private int mYear, mMonth, mDay;
 
     private Button addToTravelPlanBtn,btnDatePicker;
@@ -51,7 +51,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
         addToTravelPlanBtn=(Button)findViewById(R.id.pd_add_to_travel_plans);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
 
-        txtDate=(EditText)findViewById(R.id.in_date);
+        txtDate=(TextView) findViewById(R.id.in_date);
         fromCity=(TextView)findViewById(R.id.from_add_to_travel_plans);
         toCity=(TextView)findViewById(R.id.to_add_to_travel_plans);
         arrivalTime=(TextView)findViewById(R.id.arr_add_to_travel_plans);
@@ -104,7 +104,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
     @Override
     protected void onStart() {
         super.onStart();
-        CheckOrderState();
+        //CheckOrderState();
     }
 
 
@@ -165,6 +165,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
                 });
 
     }
+
     private void getTimeSlotDetails(String timeSlotKey) {
         //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes").child("busTimeDislpay");
         DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
@@ -176,11 +177,17 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
                 {
                     BusTimeDisplay products = dataSnapshot.getValue(BusTimeDisplay.class);
 
-                    fromCity.setText("From : "+products.getFrom().toUpperCase());
-                    toCity.setText("To : "+products.getTo().toUpperCase());
-                    arrivalTime.setText("Arrival Time : "+products.getArrTime());
-                    departureTime.setText("Departure Time : "+products.getDepTime());
-                    rideNo.setText("Ride No : "+products.getRideNo());
+                    fromCity.setText(products.getFrom().toUpperCase());
+                    toCity.setText(products.getTo().toUpperCase());
+                    arrivalTime.setText(products.getArrTime());
+                    departureTime.setText(products.getDepTime());
+                    rideNo.setText(products.getRideNo());
+//
+//                    fromCity.setText("From : "+products.getFrom().toUpperCase());
+//                    toCity.setText("To : "+products.getTo().toUpperCase());
+//                    arrivalTime.setText("Arrival Time : "+products.getArrTime());
+//                    departureTime.setText("Departure Time : "+products.getDepTime());
+//                    rideNo.setText("Ride No : "+products.getRideNo());
 
                 }
             }

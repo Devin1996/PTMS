@@ -38,11 +38,11 @@ public class PasLoginActivity extends AppCompatActivity {
 
     private ProgressDialog loadingBar;
 
-//    private FirebaseAuth mAuth;
-//    private FirebaseUser currentUser;
-//    private DatabaseReference PasDatabaseRef;
+    //private FirebaseAuth mAuth;
+    //private FirebaseUser currentUser;
+    //private DatabaseReference PasDatabaseRef;
 
-//    String PasId;
+    //String PasId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,9 @@ public class PasLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pas_login);
 
         //Authenticating with Firebase
-//        mAuth = FirebaseAuth.getInstance();
-//        currentUser = mAuth.getCurrentUser();
-//        PasId = currentUser.getUid();
+        //mAuth = FirebaseAuth.getInstance();
+        //currentUser = mAuth.getCurrentUser();
+        //PasId = currentUser.getUid();
 
 
         pasLogInBtn = (Button) findViewById(R.id.pas_login_btn);
@@ -136,6 +136,7 @@ public class PasLoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(PasLoginActivity.this , PasMenuActivity.class);
                             Prevelent.currentOnlineUser = usersData;
                             startActivity(intent);
+                            finish();
 
 
                         } else {

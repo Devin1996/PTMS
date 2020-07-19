@@ -48,22 +48,22 @@ public class MyTravelPlansActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
-        txtTotalAmount = (TextView) findViewById(R.id.total_price);
+        //NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
+        //txtTotalAmount = (TextView) findViewById(R.id.total_price);
         //txtMsg1=(TextView) findViewById(R.id.msg1);
 
-        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //txtTotalAmount.setText("Total Price" + String.valueOf(overTotalPrice));
-
-                Intent intent = new Intent(MyTravelPlansActivity.this, ConfirmFinalBooking.class);
-                //intent.putExtra("Total Price", String.valueOf(overTotalPrice));
-                startActivity(intent);
-                finish();
-            }
-        });
+//        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //txtTotalAmount.setText("Total Price" + String.valueOf(overTotalPrice));
+//
+//                Intent intent = new Intent(MyTravelPlansActivity.this, ConfirmFinalBooking.class);
+//                //intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
 
     }
@@ -72,7 +72,7 @@ public class MyTravelPlansActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        CheckOrderState();
+        //CheckOrderState();
 
         final DatabaseReference bookingListRef = FirebaseDatabase.getInstance().getReference().child("bookingList");
 
@@ -114,7 +114,8 @@ public class MyTravelPlansActivity extends AppCompatActivity {
                         CharSequence options[] = new CharSequence[]
                                 {
                                         "Edit Booking",
-                                        "Remove Booking"
+                                        "Remove Booking",
+                                        "Confirm"
                                 };
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(MyTravelPlansActivity.this);
@@ -142,6 +143,29 @@ public class MyTravelPlansActivity extends AppCompatActivity {
                                                         Toast.makeText(MyTravelPlansActivity.this, "Booking removed", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(MyTravelPlansActivity.this, PasMenuActivity.class);
+                                                        startActivity(intent);
+                                                    }
+                                                }
+                                            });
+                                }
+                                if (which == 2) {
+//                                    Intent intent = new Intent(MyTravelPlansActivity.this, AddToTravelPlansActivity.class);
+//                                    intent.putExtra("timeSlotKey", model.getTimeSlotKey());
+//                                    startActivity(intent);
+
+                                    bookingListRef.child("passengerBookingView")
+                                            .child(Prevelent.currentOnlineUser.getPhone())
+                                            .child("busBooking")
+                                            .child(model.getTimeSlotKey())
+                                            .removeValue()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(MyTravelPlansActivity.this, "Booking removed", Toast.LENGTH_SHORT).show();
+
+                                                        Intent intent = new Intent(MyTravelPlansActivity.this, AddToTravelPlansActivity.class);
+                                                        intent.putExtra("timeSlotKey", model.getTimeSlotKey());
                                                         startActivity(intent);
                                                     }
                                                 }

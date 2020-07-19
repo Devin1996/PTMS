@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,161 +7,141 @@
     tools:context=".AddToTravelPlansActivity">
 
 
-    <EditText
+    <TextView
         android:id="@+id/in_date"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/pd_add_to_travel_plans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_date" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btn_date"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/btn_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_below="@+id/no_seats_btn"
+        android:background="@drawable/buttonblack"
+        android:text="Selcet Date"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        />
+
+    <TextView
+        android:id="@+id/usr_msg_abt_date"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/in_date"
-        android:layout_marginBottom="19dp"
-        android:layout_toEndOf="@+id/in_date"
-        android:layout_toRightOf="@+id/in_date"
-        android:text="SELECT DATE"
-        app:layout_constraintBottom_toTopOf="@+id/in_date"
-        app:layout_constraintEnd_toEndOf="@+id/in_date"
-        app:layout_constraintStart_toStartOf="@+id/in_date"
-        app:layout_constraintTop_toBottomOf="@+id/no_seats_btn" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="17dp"
+        android:gravity="center"
+        android:layout_below="@+id/track_no_add_to_travel_plans"
+        android:text="Please Select number of seats"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
         android:id="@+id/no_seats_btn"
         android:layout_width="200dp"
         android:layout_height="153dp"
         android:layout_centerHorizontal="true"
-
-        android:layout_marginBottom="21dp"
+        android:layout_below="@+id/usr_msg_abt_date"
+        android:layout_marginTop="2dp"
         android:elevation="6dp"
         app:finalNumber="10"
         app:initialNumber="1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_seats_add_to_travel_plans_title"
         app:textSize="16dp">
 
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
     <Button
         android:id="@+id/pd_add_to_travel_plans"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-
-
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="27dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/buttonblack"
         android:text="Add to Travel Plans"
         android:textColor="@android:color/white"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/in_date" />
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/add_to_travel_plans_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Add to Travel Plans"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/from_add_to_travel_plans"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
+        android:layout_below="@+id/add_to_travel_plans_topic"
         android:text="From"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/to_add_to_travel_plans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/to_add_to_travel_plans"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_below="@+id/from_add_to_travel_plans"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="To"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/dep_add_to_travel_plans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/from_add_to_travel_plans" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/dep_add_to_travel_plans"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_below="@+id/to_add_to_travel_plans"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Departure Time"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/arr_add_to_travel_plans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_add_to_travel_plans" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/arr_add_to_travel_plans"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_below="@+id/dep_add_to_travel_plans"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Arrival Name"
+        android:text="Arrival Time"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/track_no_add_to_travel_plans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dep_add_to_travel_plans" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/track_no_add_to_travel_plans"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="39dp"
+        android:layout_below="@+id/arr_add_to_travel_plans"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Track No"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/no_seats_add_to_travel_plans_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/arr_add_to_travel_plans" />
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/no_seats_add_to_travel_plans_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="Select Number of Seats"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/no_seats_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/track_no_add_to_travel_plans" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

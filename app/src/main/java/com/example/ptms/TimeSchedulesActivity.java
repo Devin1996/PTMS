@@ -74,7 +74,7 @@ public class TimeSchedulesActivity extends AppCompatActivity {
                 BusRouteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(TimeSchedulesActivity.this, PasMenuActivity.class);
+                        Intent intent = new Intent(TimeSchedulesActivity.this, Search4BookActivity.class);
                         intent.putExtra("rid", BusRoute.getRouteRegNo());
                         startActivity(intent);
 

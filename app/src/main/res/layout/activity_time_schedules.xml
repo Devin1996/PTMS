@@ -1,50 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TimeSchedulesActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/r2"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/heading_label_routes"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Bus Routes"
+        android:textColor="#555555"
+        android:textSize="24sp" />
 
+<!--    <EditText-->
+<!--        android:id="@+id/search_field_route"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/heading_label_routes"-->
+<!--        android:layout_alignStart="@+id/heading_label_routes"-->
+<!--        android:layout_alignLeft="@+id/heading_label_routes"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_toStartOf="@+id/search_btn"-->
+<!--        android:layout_toLeftOf="@+id/search_btn"-->
+<!--        android:background="@drawable/search_layout"-->
+<!--        android:ems="10"-->
+<!--        android:hint="From"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:textColor="#999999"-->
+<!--        android:textSize="16sp" />-->
 
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <EditText-->
+<!--        android:id="@+id/search_to_field_123_to"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/search_field_route"-->
+<!--        android:layout_alignStart="@+id/heading_label_routes"-->
+<!--        android:layout_alignLeft="@+id/heading_label_routes"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_toStartOf="@+id/search_btn"-->
+<!--        android:layout_toLeftOf="@+id/search_btn"-->
+<!--        android:background="@drawable/search_layout"-->
+<!--        android:ems="10"-->
+<!--        android:hint="To"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:textColor="#999999"-->
+<!--        android:textSize="16sp" />-->
 
-        <TextView
-            android:id="@+id/total_price"
-            android:layout_width="172dp"
-            android:layout_height="44dp"
-            android:text="Bus Routes"
+<!--    <ImageButton-->
+<!--        android:id="@+id/search_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignTop="@+id/search_field_route"-->
+<!--        android:layout_alignBottom="@+id/search_field_route"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:background="@android:color/background_light"-->
+<!--        app:srcCompat="@drawable/sea"-->
+<!--        tools:ignore="VectorDrawableCompat" />-->
 
-            android:textColor="@android:color/white"
-            android:textSize="25dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="131dp"
-            tools:layout_editor_absoluteY="5dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bus_route_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_below="@+id/r2"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r2">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/heading_label_routes"
+        android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>
 
-    </androidx.recyclerview.widget.RecyclerView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+

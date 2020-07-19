@@ -1,34 +1,48 @@
 package com.example.ptms.Model;
 
 public class BusTimeDisplay {
-    private String arrTime, busTimeKey, depTime, from, routeRegNo, to, trackNo, rideNo;
+    private String arrTime, depTime, from,rideNo, routeRegNo, searchkey, timeSlotKey, to, trackNo;
 
-    public BusTimeDisplay(String arrTime, String busTimeKey, String depTime, String from, String routeRegNo, String to, String trackNo) {
+//    public BusTimeDisplay(String arrTime, String busTimeKey, String depTime, String from, String routeRegNo, String to, String trackNo) {
+//        this.arrTime = arrTime;
+//        this.busTimeKey = busTimeKey;
+//        this.depTime = depTime;
+//        this.from = from;
+//        this.routeRegNo = routeRegNo;
+//        this.to = to;
+//        this.trackNo = trackNo;
+//    }
+//
+//    public BusTimeDisplay(String arrTime, String depTime, String from, String to, String rideNo) {
+//        this.arrTime = arrTime;
+//        this.depTime = depTime;
+//        this.from = from;
+//        this.to = to;
+//        this.rideNo = rideNo;
+//    }
+//
+//    public BusTimeDisplay(String arrTime , String busTimeKey , String depTime , String from , String to , String rideNo) {
+//        this.arrTime = arrTime;
+//        this.busTimeKey = busTimeKey;
+//        this.depTime = depTime;
+//        this.from = from;
+//        this.to = to;
+//        this.rideNo = rideNo;
+//    }
+
+
+    public BusTimeDisplay(String arrTime , String depTime , String from , String rideNo , String routeRegNo , String searchkey , String timeSlotKey , String to , String trackNo) {
         this.arrTime = arrTime;
-        this.busTimeKey = busTimeKey;
         this.depTime = depTime;
         this.from = from;
+        this.rideNo = rideNo;
         this.routeRegNo = routeRegNo;
+        this.searchkey = searchkey;
+        this.timeSlotKey = timeSlotKey;
         this.to = to;
         this.trackNo = trackNo;
     }
 
-    public BusTimeDisplay(String arrTime, String depTime, String from, String to, String rideNo) {
-        this.arrTime = arrTime;
-        this.depTime = depTime;
-        this.from = from;
-        this.to = to;
-        this.rideNo = rideNo;
-    }
-
-    public BusTimeDisplay(String arrTime , String busTimeKey , String depTime , String from , String to , String rideNo) {
-        this.arrTime = arrTime;
-        this.busTimeKey = busTimeKey;
-        this.depTime = depTime;
-        this.from = from;
-        this.to = to;
-        this.rideNo = rideNo;
-    }
 
     public BusTimeDisplay() {
 
@@ -42,12 +56,20 @@ public class BusTimeDisplay {
         this.rideNo = rideNo;
     }
 
-    public String getBusTimeKey() {
-        return busTimeKey;
+    public String getSearchkey() {
+        return searchkey;
     }
 
-    public void setBusTimeKey(String busTimeKey) {
-        this.busTimeKey = busTimeKey;
+    public void setSearchkey(String searchkey) {
+        this.searchkey = searchkey;
+    }
+
+    public String getTimeSlotKey() {
+        return timeSlotKey;
+    }
+
+    public void setTimeSlotKey(String timeSlotKey) {
+        this.timeSlotKey = timeSlotKey;
     }
 
     public String getRouteRegNo() {

@@ -1,136 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:background="@drawable/search_layout"
+    android:padding="10dp"
     app:cardElevation="15dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="373dp"
-        android:layout_height="212dp"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/my_travel_list_to"
-        app:layout_constraintTop_toBottomOf="@+id/my_travel_list_to">
 
-        <TextView
-            android:id="@+id/my_travel_list_to_booked_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginLeft="26dp"
-            android:layout_marginEnd="103dp"
-            android:layout_marginRight="103dp"
-            android:text="NO"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/my_travel_list_arr_time"
-            app:layout_constraintEnd_toStartOf="@+id/my_travel_list_arr_time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/my_travel_list_arr_time" />
+    <TextView
+        android:id="@+id/my_travel_list_to_booked_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:layout_marginTop="10dp"
+        android:textColor="#555555"
+        android:layout_below="@+id/my_travel_list_to_booked_seats"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
 
 
-        <TextView
-            android:id="@+id/my_travel_list_arr_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginRight="21dp"
-            android:layout_marginBottom="6dp"
-            android:gravity="right"
-            android:text="Name"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/my_travel_list_to"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/my_travel_list_to_booked_date"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/my_travel_list_to"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/my_travel_list_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="From"
+        android:textColor="#555555"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        />
 
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginRight="17dp"
-            android:layout_marginBottom="11dp"
-            android:gravity="center"
-            android:text="Average Speed"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/my_travel_list_dep_time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_travel_list_arr_time" />
+    <TextView
+        android:id="@+id/my_travel_list_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_travel_list_from"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="To"
+        android:textColor="#555555"
+        android:textSize="14dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/my_travel_list_dep_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/my_travel_list_dep_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_travel_list_to"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Departutre"
+        android:textColor="#555555"
+        android:textSize="14dp"
+        android:textStyle="bold" />
 
-            android:layout_marginStart="17dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginRight="17dp"
-            android:layout_marginBottom="7dp"
-            android:gravity="center"
-            android:text="Total Distance"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/my_travel_list_from"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_travel_list_to" />
+    <TextView
+        android:id="@+id/my_travel_list_arr_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_travel_list_dep_time"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Arrival Time"
+        android:textColor="#555555"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        />
 
-        <TextView
-            android:id="@+id/my_travel_list_from"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
 
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:gravity="center"
-            android:text="Total Distance"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/my_travel_list_to_booked_seats"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_travel_list_dep_time" />
 
-        <TextView
-            android:id="@+id/my_travel_list_to_booked_seats"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
 
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="12dp"
-            android:gravity="center"
-            android:text="Average Speed"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_travel_list_from" />
+    <TextView
+        android:id="@+id/my_travel_list_to_booked_seats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_travel_list_arr_time"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="No of Seats"
+        android:textColor="#555555"
+        android:textSize="14dp"
+        android:textStyle="bold"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

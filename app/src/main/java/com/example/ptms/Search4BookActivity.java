@@ -96,7 +96,7 @@ public class Search4BookActivity extends AppCompatActivity {
                             public void onClick(View view)
                             {
                                 Intent intent = new Intent(Search4BookActivity.this, AddToTravelPlansActivity.class);
-                                intent.putExtra("timeSlotKey", model.getBusTimeKey());
+                                intent.putExtra("timeSlotKey", model.getTimeSlotKey());
                                 startActivity(intent);
                             }
                         });
