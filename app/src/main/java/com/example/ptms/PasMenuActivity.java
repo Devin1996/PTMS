@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,14 +21,17 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.ptms.Model.Promotion;
+import com.example.ptms.Prevelent.Prevelent;
 import com.example.ptms.ViewHolder.PromotionAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 public class PasMenuActivity extends AppCompatActivity {
@@ -55,7 +59,6 @@ public class PasMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pas_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
         final String PassengerId = intent.getStringExtra("PasId");
 
@@ -179,6 +182,14 @@ public class PasMenuActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        View headerview = navigationView.getHeaderView(0);
+        TextView userNameTextView = headerview.findViewById(R.id.user_profile_name);
+        CircleImageView profileImageView = headerview.findViewById(R.id.user_profile_image);
+
+        userNameTextView.setText(Prevelent.currentOnlineUser.getName());
+        Picasso.get().load(Prevelent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
 
         models = new ArrayList<>();
         models.add(new Promotion(R.drawable.kandy, "Upcountry","Sri Lanka's Up Country is the island at its most scenic, a mist-wrapped land of emerald peaks."));
