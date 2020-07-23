@@ -2,10 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="search"
         android:id="@+id/search"
         android:icon="@drawable/sea"
+        android:title="search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always"
-        ></item>
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/quantum_ic_replay_white_24"
+        android:title="Refresh"
+        app:showAsAction="always" />
 </menu>

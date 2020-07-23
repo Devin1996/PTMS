@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,98 +8,74 @@
 
     <Button
         android:id="@+id/scan_qr"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="26dp"
+        android:layout_margin="20dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:text="Scan QR Code"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_qr_readTxt1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/tv_qr_readTxt1"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/report_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scan_qr" />
+        android:layout_margin="20dp"
+        android:layout_below="@+id/scan_qr"/>
 
     <Button
         android:id="@+id/report_btn"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="36dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
+        android:layout_margin="20dp"
         android:text="Report an Issue"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/review_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_qr_readTxt1" />
+        android:layout_below="@+id/tv_qr_readTxt1"/>
 
     <Button
         android:id="@+id/review_btn"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="32dp"
+        android:layout_margin="20dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:text="Review Your Experience"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/ask_help_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/report_btn" />
+        android:layout_below="@+id/report_btn"/>
 
     <Button
         android:id="@+id/ask_help_btn"
-        android:layout_width="394dp"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="307dp"
+        android:layout_margin="20dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
+        android:layout_below="@+id/review_btn"
         android:text="Ask for Help"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/review_btn" />
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/travel_bot_btn"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/ask_help_btn"
+        android:text="Travel Bot"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
     <!--    <LinearLayout-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent"-->
@@ -135,4 +111,4 @@
     <!--    </LinearLayout>-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

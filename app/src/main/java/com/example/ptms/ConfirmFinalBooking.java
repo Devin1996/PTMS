@@ -6,16 +6,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.ptms.Model.BusTimeDisplay;
 import com.example.ptms.Prevelent.Prevelent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,8 +29,10 @@ import java.util.HashMap;
 
 public class ConfirmFinalBooking extends AppCompatActivity {
 
-    private EditText nameEditText, phoneEditText;
+    private EditText payName, payID, payAmount, payNote;
     private Button confirmOrderBtn;
+    private TextView fromCity, toCity, arrivalTime, departureTime, rideNo, noSeats, txtDate;
+    private String timeSlotKey = "";
 
     //private String totalAmount = "";
 
@@ -33,13 +41,26 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_final_booking);
 
+        timeSlotKey = getIntent().getStringExtra("timeSlotKey");
+
         //totalAmount = getIntent().getStringExtra("Total Price");
         //Toast.makeText(this, "TotalPrice = $"+totalAmount, Toast.LENGTH_SHORT).show();
 
-        confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
-        nameEditText = (EditText) findViewById(R.id.shippment_name);
-        phoneEditText = (EditText) findViewById(R.id.shippment_phone_number);
+        txtDate=(TextView) findViewById(R.id.booked_date);
+        fromCity=(TextView)findViewById(R.id.from_pay_travel_plans);
+        toCity=(TextView)findViewById(R.id.to_pay_travel_plans);
+        arrivalTime=(TextView)findViewById(R.id.arr_pay_travel_plans);
+        departureTime=(TextView)findViewById(R.id.dep_pay_travel_plans);
+        rideNo=(TextView)findViewById(R.id.track_no_pay_travel_plans);
+        noSeats=(TextView)findViewById(R.id.no_seats_tv);
 
+        confirmOrderBtn = (Button) findViewById(R.id.confirm_btn_final);
+        payName = (EditText) findViewById(R.id.pay_name);
+        payID = (EditText) findViewById(R.id.pay_id);
+        payAmount = (EditText) findViewById(R.id.pay_amount);
+        payNote = (EditText) findViewById(R.id.pay_transaction);
+
+        getBookingDetails(timeSlotKey);
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,16 +72,20 @@ public class ConfirmFinalBooking extends AppCompatActivity {
     }
 
     private void Check() {
-        if (TextUtils.isEmpty(nameEditText.getText().toString())) {
-            Toast.makeText(this, "Please provide your Full name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(phoneEditText.getText().toString())) {
-            Toast.makeText(this, "Please provide number", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(payName.getText().toString())) {
+            Toast.makeText(this , "Please provide your payment name" , Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(payID.getText().toString())) {
+            Toast.makeText(this , "Please enter UPI ID number" , Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(payAmount.getText().toString())) {
+            Toast.makeText(this , "Please provide Payment Amount" , Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(payNote.getText().toString())) {
+            Toast.makeText(this , "Please provide Transaction Note" , Toast.LENGTH_SHORT).show();
         } else {
-            ConfirmOrder();
+            ConfirmBooking();
         }
     }
 
-    private void ConfirmOrder() {
+    private void ConfirmBooking() {
         final String saveCurrentDate, saveCurrentTime;
 
         Calendar calForDate = Calendar.getInstance();
@@ -71,16 +96,25 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         saveCurrentTime = currentDate.format(calForDate.getTime());
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
-                .child("bookings")
+                .child("bookings").child("confirmedBookings")
                 .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking");
 
         HashMap<String, Object> orderMap = new HashMap<>();
         //orderMap.put("totalAmount", totalAmount);
-        orderMap.put("name", nameEditText.getText().toString());
-        orderMap.put("phone", phoneEditText.getText().toString());
-        orderMap.put("date", saveCurrentDate);
-        orderMap.put("time", saveCurrentTime);
-        orderMap.put("state", "Not Reserved");
+        orderMap.put("name" , payName.getText().toString());
+        orderMap.put("payAmount" , payAmount.getText().toString());
+        orderMap.put("payID" , payID.getText().toString());
+        orderMap.put("payNote" , payNote.getText().toString());
+        orderMap.put("date" , saveCurrentDate);
+        orderMap.put("time" , saveCurrentTime);
+        orderMap.put("timeSlotKey", timeSlotKey);
+        orderMap.put("from", fromCity.getText().toString());
+        orderMap.put("to", toCity.getText().toString());
+        orderMap.put("arrTime", arrivalTime.getText().toString());
+        orderMap.put("depTime", departureTime.getText().toString());
+        orderMap.put("rideNo", rideNo.getText().toString());
+        //orderMap.put("numberOfSeats", noSeats.getText().toString());
+        //orderMap.put("BookedDate", txtDate.getText().toString());
 
         ordersRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -95,9 +129,9 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ConfirmFinalBooking.this, "Your Book has been completed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ConfirmFinalBooking.this , "Your Book has been completed" , Toast.LENGTH_SHORT).show();
 
-                                        Intent intent = new Intent(ConfirmFinalBooking.this, PasMenuActivity.class);
+                                        Intent intent = new Intent(ConfirmFinalBooking.this , PasMenuActivity.class);
                                         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         //finish();
@@ -108,5 +142,33 @@ public class ConfirmFinalBooking extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getBookingDetails(String timeSlotKey) {
+        //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes").child("busTimeDislpay");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
+
+        productsRef.child(timeSlotKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    BusTimeDisplay products = dataSnapshot.getValue(BusTimeDisplay.class);
+
+                    fromCity.setText(products.getFrom().toUpperCase());
+                    toCity.setText(products.getTo().toUpperCase());
+                    arrivalTime.setText(products.getArrTime());
+                    departureTime.setText(products.getDepTime());
+                    rideNo.setText(products.getRideNo());
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+
+            }
+        });
     }
 }

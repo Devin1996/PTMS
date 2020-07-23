@@ -10,6 +10,9 @@
     <color name="color3">#796e25</color>
     <color name="color4">#59717c</color>
 
+    <color name="bg_bubble_self">#62caa6</color>
+    <color name="bg_bubble_watbot">#ecf0f1</color>
+
     <color name="QRCodeWhiteColor">#ffffff</color>
 
     <color name="QRCodeBlackColor">#000000</color>

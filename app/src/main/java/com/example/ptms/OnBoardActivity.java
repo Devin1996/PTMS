@@ -29,7 +29,7 @@ public class OnBoardActivity extends AppCompatActivity {
     Button scanQrBtn;
     Button reportBtn;
     Button reviewBtn;
-    Button askHelpBtn;
+    Button askHelpBtn,chatBot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class OnBoardActivity extends AppCompatActivity {
         reportBtn = (Button) findViewById(R.id.report_btn);
         reviewBtn = (Button) findViewById(R.id.review_btn);
         askHelpBtn = (Button) findViewById(R.id.ask_help_btn);
+        chatBot = (Button) findViewById(R.id.travel_bot_btn);
 
         scanQrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +84,14 @@ public class OnBoardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pushValue();
                 Intent intent = new Intent(OnBoardActivity.this, AskHelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        chatBot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OnBoardActivity.this, ChatbotActivity.class);
                 startActivity(intent);
             }
         });

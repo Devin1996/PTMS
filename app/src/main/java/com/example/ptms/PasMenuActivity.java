@@ -1,6 +1,7 @@
 package com.example.ptms;
 
 import android.animation.ArgbEvaluator;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class PasMenuActivity extends AppCompatActivity {
 
     private DatabaseReference PasDatabaseRef;
     String PasId;
+    ClipData.Item Bot;
 
     private AppBarConfiguration mAppBarConfiguration;
     private Boolean currentLogOutPasStatus = false;
@@ -205,7 +207,7 @@ public class PasMenuActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(130,0,130,0);
 
-        Integer[] colors_temp = {
+        Integer[]  colors_temp = {
                 getResources().getColor(R.color.color1),
                 getResources().getColor(R.color.color2),
                 getResources().getColor(R.color.color3),

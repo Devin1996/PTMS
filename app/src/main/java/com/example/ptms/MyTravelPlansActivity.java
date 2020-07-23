@@ -164,7 +164,7 @@ public class MyTravelPlansActivity extends AppCompatActivity {
                                                     if (task.isSuccessful()) {
                                                         Toast.makeText(MyTravelPlansActivity.this, "Booking removed", Toast.LENGTH_SHORT).show();
 
-                                                        Intent intent = new Intent(MyTravelPlansActivity.this, AddToTravelPlansActivity.class);
+                                                        Intent intent = new Intent(MyTravelPlansActivity.this, ConfirmFinalBooking.class);
                                                         intent.putExtra("timeSlotKey", model.getTimeSlotKey());
                                                         startActivity(intent);
                                                     }
