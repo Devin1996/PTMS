@@ -23,7 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        android:layout_below="@+id/scan_qr"/>
+        android:layout_below="@+id/scan_qr"
+        android:gravity="center"
+        android:hint="Please Scan the QR code in front of you"/>
 
     <Button
         android:id="@+id/report_btn"

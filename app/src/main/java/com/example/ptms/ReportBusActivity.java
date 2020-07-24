@@ -1,14 +1,15 @@
 package com.example.ptms;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class ReportBusActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class ReportBusActivity extends AppCompatActivity {
     CheckBox carelessBtn;
     CheckBox inappropriateBtn;
     CheckBox otherBtn;
-    TextView tv;
+    TextView textQR;
     TextView tv2;
 
     @Override
@@ -29,13 +30,13 @@ public class ReportBusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_bus);
 
-        TextView tv = (TextView) findViewById(R.id.textView);
+        final TextView textQR = (TextView) findViewById(R.id.textView_qr);
         final TextView tv2 = (TextView) findViewById(R.id.textView2);
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(OnBoardActivity.EXTRA_TEXT);
+        String textval = intent.getStringExtra(OnBoardActivity.EXTRA_TEXT);
 
-        tv.setText(text);
+        textQR.setText(textval);
 
         reportConfirmBtn = (Button) findViewById(R.id.reprt_confirm_btn);
         cancelBtn = (Button) findViewById(R.id.cancel_report_btn);
@@ -55,22 +56,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     violenceBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -88,22 +89,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     highNoiceBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -120,22 +121,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     highSpeedBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -152,22 +153,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     carelessBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -185,22 +186,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     violenceBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -218,22 +219,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     inappropriateBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -250,22 +251,22 @@ public class ReportBusActivity extends AppCompatActivity {
                     otherBtn.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
                 String reporting = "";
-                if (violenceBtn.isChecked()){
+                if (violenceBtn.isChecked()) {
                     reporting += "\n Violence";
                 }
-                if (highSpeedBtn.isChecked()){
+                if (highSpeedBtn.isChecked()) {
                     reporting += "\n High Speed";
                 }
-                if (highNoiceBtn.isChecked()){
+                if (highNoiceBtn.isChecked()) {
                     reporting += " \n High Noise";
                 }
-                if (carelessBtn.isChecked()){
+                if (carelessBtn.isChecked()) {
                     reporting += " \n Careless";
                 }
-                if (inappropriateBtn.isChecked()){
+                if (inappropriateBtn.isChecked()) {
                     reporting += " \n Inappropriate";
                 }
-                if (otherBtn.isChecked()){
+                if (otherBtn.isChecked()) {
                     reporting += " \nOther";
                 }
                 tv2.setText(reporting);
@@ -277,11 +278,15 @@ public class ReportBusActivity extends AppCompatActivity {
         reportConfirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(ReportBusActivity.this , "Your Report Submitted Successfully" , Toast.LENGTH_SHORT).show();
-                Intent intentMenu = new Intent(ReportBusActivity.this , PasMenuActivity.class);
-                startActivity(intentMenu);
-                finish();
+                String tv_s = tv2.getText().toString();
+                if (TextUtils.isEmpty(tv_s)) {
+                    Toast.makeText(ReportBusActivity.this , "Please Select your issues" , Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ReportBusActivity.this , "Your Report Submitted Successfully" , Toast.LENGTH_SHORT).show();
+                    Intent intentMenu = new Intent(ReportBusActivity.this , PasMenuActivity.class);
+                    startActivity(intentMenu);
+                    finish();
+                }
             }
         });
 
@@ -297,24 +302,24 @@ public class ReportBusActivity extends AppCompatActivity {
 
     }
 
-    public void reportIssues(){
+    public void reportIssues() {
         String reporting = "";
-        if (violenceBtn.isChecked()){
+        if (violenceBtn.isChecked()) {
             reporting += "\n Violence";
         }
-        if (highSpeedBtn.isChecked()){
+        if (highSpeedBtn.isChecked()) {
             reporting += "\n High Speed";
         }
-        if (highNoiceBtn.isChecked()){
+        if (highNoiceBtn.isChecked()) {
             reporting += " \n High Noise";
         }
-        if (carelessBtn.isChecked()){
+        if (carelessBtn.isChecked()) {
             reporting += " \n Careless";
         }
-        if (inappropriateBtn.isChecked()){
+        if (inappropriateBtn.isChecked()) {
             reporting += " \n Inappropriate";
         }
-        if (otherBtn.isChecked()){
+        if (otherBtn.isChecked()) {
             reporting += " \nOther";
         }
         tv2.setText(reporting);

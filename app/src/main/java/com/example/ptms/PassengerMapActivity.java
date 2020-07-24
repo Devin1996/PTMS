@@ -84,8 +84,8 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
         DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("drivers_working");
         DriverAvailableRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
-        LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
-        settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
+        //LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
+        //settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
         MCallBtn = (Button) findViewById(R.id.m_call);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -93,18 +93,18 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        LogoutPasBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                currentLogOutPasStatus=true;
-                //DisconnectTheDriver();
-
-                mAuth.signOut();
-
-                LogOutPassenger();
-            }
-        });
+//        LogoutPasBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                currentLogOutPasStatus=true;
+//                //DisconnectTheDriver();
+//
+//                mAuth.signOut();
+//
+//                LogOutPassenger();
+//            }
+//        });
 
         MCallBtn.setOnClickListener(new View.OnClickListener() {
             @Override
