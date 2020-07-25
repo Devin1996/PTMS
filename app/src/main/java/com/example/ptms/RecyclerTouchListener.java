@@ -7,8 +7,6 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ptms.Interface.ClickListener;
-
 /**
  * Created by VMac on 06/01/17.
  */

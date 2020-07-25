@@ -153,23 +153,23 @@ public class MyTravelPlansActivity extends AppCompatActivity {
 //                                    intent.putExtra("timeSlotKey", model.getTimeSlotKey());
 //                                    startActivity(intent);
 
-                                    bookingListRef.child("passengerBookingView")
-                                            .child(Prevelent.currentOnlineUser.getPhone())
-                                            .child("busBooking")
-                                            .child(model.getTimeSlotKey())
-                                            .removeValue()
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(MyTravelPlansActivity.this, "Booking removed", Toast.LENGTH_SHORT).show();
+//                                    bookingListRef.child("passengerBookingView")
+//                                            .child(Prevelent.currentOnlineUser.getPhone())
+//                                            .child("busBooking")
+//                                            .child(model.getTimeSlotKey())
+//                                            .removeValue()
+//                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                                @Override
+//                                                public void onComplete(@NonNull Task<Void> task) {
+//                                                    if (task.isSuccessful()) {
+                                                        //Toast.makeText(MyTravelPlansActivity.this, "Booking removed", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(MyTravelPlansActivity.this, ConfirmFinalBooking.class);
                                                         intent.putExtra("timeSlotKey", model.getTimeSlotKey());
                                                         startActivity(intent);
-                                                    }
-                                                }
-                                            });
+//                                                    }
+//                                                }
+//                                            });
                                 }
 
                             }

@@ -7,4 +7,5 @@
     tools:context=".ChatBotActivity">
 
     <include layout="@layout/content_chat_room" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

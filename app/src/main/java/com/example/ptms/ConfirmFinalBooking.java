@@ -12,8 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.ptms.Model.BusTimeDisplay;
+import com.example.ptms.Model.Book;
 import com.example.ptms.Prevelent.Prevelent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,13 +45,13 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         //totalAmount = getIntent().getStringExtra("Total Price");
         //Toast.makeText(this, "TotalPrice = $"+totalAmount, Toast.LENGTH_SHORT).show();
 
-        txtDate=(TextView) findViewById(R.id.booked_date);
-        fromCity=(TextView)findViewById(R.id.from_pay_travel_plans);
-        toCity=(TextView)findViewById(R.id.to_pay_travel_plans);
-        arrivalTime=(TextView)findViewById(R.id.arr_pay_travel_plans);
-        departureTime=(TextView)findViewById(R.id.dep_pay_travel_plans);
-        rideNo=(TextView)findViewById(R.id.track_no_pay_travel_plans);
-        noSeats=(TextView)findViewById(R.id.no_seats_tv);
+        txtDate = (TextView) findViewById(R.id.booked_date);
+        fromCity = (TextView) findViewById(R.id.from_pay_travel_plans);
+        toCity = (TextView) findViewById(R.id.to_pay_travel_plans);
+        arrivalTime = (TextView) findViewById(R.id.arr_pay_travel_plans);
+        departureTime = (TextView) findViewById(R.id.dep_pay_travel_plans);
+        rideNo = (TextView) findViewById(R.id.track_no_pay_travel_plans);
+        noSeats = (TextView) findViewById(R.id.no_seats_tv);
 
         confirmOrderBtn = (Button) findViewById(R.id.confirm_btn_final);
         payName = (EditText) findViewById(R.id.pay_name);
@@ -96,8 +95,8 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         saveCurrentTime = currentDate.format(calForDate.getTime());
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
-                .child("bookings").child("confirmedBookings")
-                .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking");
+                .child("bookingList").child("confirmedBookings")
+                .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking").child(timeSlotKey);
 
         HashMap<String, Object> orderMap = new HashMap<>();
         //orderMap.put("totalAmount", totalAmount);
@@ -107,14 +106,14 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         orderMap.put("payNote" , payNote.getText().toString());
         orderMap.put("date" , saveCurrentDate);
         orderMap.put("time" , saveCurrentTime);
-        orderMap.put("timeSlotKey", timeSlotKey);
-        orderMap.put("from", fromCity.getText().toString());
-        orderMap.put("to", toCity.getText().toString());
-        orderMap.put("arrTime", arrivalTime.getText().toString());
-        orderMap.put("depTime", departureTime.getText().toString());
-        orderMap.put("rideNo", rideNo.getText().toString());
-        //orderMap.put("numberOfSeats", noSeats.getText().toString());
-        //orderMap.put("BookedDate", txtDate.getText().toString());
+        orderMap.put("timeSlotKey" , timeSlotKey);
+        orderMap.put("from" , fromCity.getText().toString());
+        orderMap.put("to" , toCity.getText().toString());
+        orderMap.put("arrTime" , arrivalTime.getText().toString());
+        orderMap.put("depTime" , departureTime.getText().toString());
+        orderMap.put("rideNo" , rideNo.getText().toString());
+        orderMap.put("numberOfSeats" , noSeats.getText().toString());
+        orderMap.put("BookedDate", txtDate.getText().toString());
 
         ordersRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -124,6 +123,7 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                             .child("bookingList")
                             .child("passengerBookingView")
                             .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking")
+                            .child(timeSlotKey)
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -145,20 +145,24 @@ public class ConfirmFinalBooking extends AppCompatActivity {
     }
 
     private void getBookingDetails(String timeSlotKey) {
-        //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTimes").child("busTimeDislpay");
-        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
+        DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference().child("bookingList").child("passengerBookingView")
+                .child(Prevelent.currentOnlineUser.getPhone())
+                .child("busBooking");
+        //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
 
-        productsRef.child(timeSlotKey).addValueEventListener(new ValueEventListener() {
+        bookingRef.child(timeSlotKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    BusTimeDisplay products = dataSnapshot.getValue(BusTimeDisplay.class);
+                    Book booking = dataSnapshot.getValue(Book.class);
 
-                    fromCity.setText(products.getFrom().toUpperCase());
-                    toCity.setText(products.getTo().toUpperCase());
-                    arrivalTime.setText(products.getArrTime());
-                    departureTime.setText(products.getDepTime());
-                    rideNo.setText(products.getRideNo());
+                    fromCity.setText(booking.getFrom().toUpperCase());
+                    toCity.setText(booking.getTo().toUpperCase());
+                    arrivalTime.setText(booking.getArrTime());
+                    departureTime.setText(booking.getDepTime());
+                    //rideNo.setText(products.getTrackNo());
+                    noSeats.setText(booking.getNumberOfSeats());
+                    txtDate.setText(booking.getBookedDate());
 
 
                 }

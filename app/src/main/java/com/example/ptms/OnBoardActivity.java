@@ -98,7 +98,7 @@ public class OnBoardActivity extends AppCompatActivity {
         chatBot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OnBoardActivity.this , ChatbotActivity.class);
+                Intent intent = new Intent(OnBoardActivity.this , ChatBotActivity.class);
                 startActivity(intent);
             }
         });

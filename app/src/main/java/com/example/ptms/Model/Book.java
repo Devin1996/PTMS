@@ -1,10 +1,10 @@
 package com.example.ptms.Model;
 
 public class Book {
-    private String bookedDate, arrTime, date, depTime, from, numberOfSeats, time, timeSlotKey, to, trackNo;
+    private String BookedDate, arrTime, date, depTime, from, numberOfSeats, time, timeSlotKey, to, trackNo;
 
     public Book(String bookedDate, String arrTime, String date, String depTime, String from, String numberOfSeats, String time, String timeSlotKey, String to, String trackNo) {
-        this.bookedDate = bookedDate;
+        this.BookedDate = bookedDate;
         this.arrTime = arrTime;
         this.date = date;
         this.depTime = depTime;
@@ -20,11 +20,11 @@ public class Book {
     }
 
     public String getBookedDate() {
-        return bookedDate;
+        return BookedDate;
     }
 
     public void setBookedDate(String bookedDate) {
-        this.bookedDate = bookedDate;
+        this.BookedDate = bookedDate;
     }
 
     public String getArrTime() {

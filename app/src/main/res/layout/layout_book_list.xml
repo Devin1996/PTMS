@@ -88,18 +88,16 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/travel_not_confirmed"
+        android:id="@+id/travel_confirmed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/my_travel_list_to_booked_date"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Not Confirmed"
-        android:textColor="#740000"
+        android:text="Confirmed"
+        android:textColor="#1adc00"
         android:textSize="14dp"
         android:textStyle="bold"/>
-
-
 
 
 </RelativeLayout>
