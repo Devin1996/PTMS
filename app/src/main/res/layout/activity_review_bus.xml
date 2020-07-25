@@ -12,6 +12,7 @@
         android:background="@drawable/input_design"
         android:layout_height="400dp"
         android:ems="10"
+        android:hint="Write your Review about the travelling Experience"
         android:padding="10dp"
         android:layout_margin="30dp"
         android:gravity="start|top"
@@ -24,7 +25,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
-        android:layout_below="@+id/editTextTextMultiLine"
+        android:layout_below="@+id/textView_qr_review"
         android:text="Publish Review"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
@@ -42,4 +43,34 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_qr_review"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="QR code relate to your current Travel Bus"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/editTextTextMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careless_btn" />
+
+    <TextView
+        android:id="@+id/textView_review_hiden"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="QR code relate to your current Travel Bus"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/textView_qr_review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careless_btn" />
 </RelativeLayout>

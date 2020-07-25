@@ -57,7 +57,7 @@ public class OnBoardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String busDetail = tv_qr_readTxt.getText().toString();
                 if (TextUtils.isEmpty(busDetail)) {
-                    Toast.makeText(OnBoardActivity.this , "Please Scan the Qr Code" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OnBoardActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(OnBoardActivity.this , ReportBusActivity.class);
                     intent.putExtra(EXTRA_TEXT , busDetail);
@@ -72,7 +72,7 @@ public class OnBoardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String busDetail = tv_qr_readTxt.getText().toString();
                 if (TextUtils.isEmpty(busDetail)) {
-                    Toast.makeText(OnBoardActivity.this , "Please Scan the Qr Code" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OnBoardActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(OnBoardActivity.this , ReviewBusActivity.class);
                     intent.putExtra(EXTRA_TEXT , busDetail);
@@ -84,9 +84,14 @@ public class OnBoardActivity extends AppCompatActivity {
         askHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pushValue();
-                Intent intent = new Intent(OnBoardActivity.this , AskHelpActivity.class);
-                startActivity(intent);
+                String busDetail = tv_qr_readTxt.getText().toString();
+                if (TextUtils.isEmpty(busDetail)) {
+                    Toast.makeText(OnBoardActivity.this , "Please scan the qr code first" , Toast.LENGTH_SHORT).show();
+                } else {
+                    //pushValue();
+                    Intent intent = new Intent(OnBoardActivity.this , AskHelpActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
