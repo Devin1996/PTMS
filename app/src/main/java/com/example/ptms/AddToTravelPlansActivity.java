@@ -31,7 +31,6 @@ import java.util.HashMap;
 public class AddToTravelPlansActivity extends AppCompatActivity implements
         View.OnClickListener {
 
-
     private TextView txtDate;
     private int mYear, mMonth, mDay;
 
@@ -182,7 +181,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
                     arrivalTime.setText(products.getArrTime());
                     departureTime.setText(products.getDepTime());
                     rideNo.setText(products.getRideNo());
-//
+
 //                    fromCity.setText("From : "+products.getFrom().toUpperCase());
 //                    toCity.setText("To : "+products.getTo().toUpperCase());
 //                    arrivalTime.setText("Arrival Time : "+products.getArrTime());

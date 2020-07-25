@@ -303,7 +303,6 @@ public class ReportBusActivity extends AppCompatActivity {
                     Toast.makeText(ReportBusActivity.this , "Please Select your issues" , Toast.LENGTH_SHORT).show();
                 } else {
                     addToReportList(tv_s , tv_q);
-                    Toast.makeText(ReportBusActivity.this , "Your Report Submitted Successfully" , Toast.LENGTH_SHORT).show();
                     Intent intentMenu = new Intent(ReportBusActivity.this , PasMenuActivity.class);
                     startActivity(intentMenu);
                     finish();
@@ -357,7 +356,7 @@ public class ReportBusActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calForDate.getTime());
 
 //        String userPhone = Prevelent.currentOnlineUser.getPhone();
-        final String reportKey = saveCurrentTime + saveCurrentDate + Prevelent.currentOnlineUser.getPhone() + QrValue;
+        final String reportKey = saveCurrentDate + Prevelent.currentOnlineUser.getPhone() + QrValue;
 
         final DatabaseReference reportListRef;
         reportListRef = FirebaseDatabase.getInstance().getReference().child("report");
@@ -393,7 +392,7 @@ public class ReportBusActivity extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    Toast.makeText(ReportBusActivity.this , "A account with already exists" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReportBusActivity.this , "Your review already exists" , Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(ReportBusActivity.this , "Please try again using another way" , Toast.LENGTH_SHORT).show();
 
