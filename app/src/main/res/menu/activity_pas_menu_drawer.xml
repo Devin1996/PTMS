@@ -22,7 +22,7 @@
             android:title="On Board" />
     </group>
 
-    <item android:title="">
+    <item android:title="                         Other">
         <menu>
             <item
                 android:id="@+id/nav_share"

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.ptms.Prevelent.Prevelent;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
@@ -67,6 +68,8 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 
     Marker DriverMarker;
 
+    private String currentPassenger;
+
 
     private Boolean currentLogOutPasStatus= false;
 
@@ -79,32 +82,37 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 //        mAuth = FirebaseAuth.getInstance();
 //        currentUser = mAuth.getCurrentUser();
 //        PasID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        currentPassenger = Prevelent.currentOnlineUser.getPhone();
+
         PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Passsenger Requests");
 
         DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("drivers_working");
         DriverAvailableRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
-        //LogoutPasBtn = (Button) findViewById(R.id.m_p_logout);
-        //settingsPasBtn = (Button) findViewById(R.id.m_p_setting);
-        MCallBtn = (Button) findViewById(R.id.m_call);
+        LogoutPasBtn = (Button) findViewById(R.id.m_call);
+        settingsPasBtn = (Button) findViewById(R.id.m_call2);
+
+        //MCallBtn = (Button) findViewById(R.id.m_call);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-//        LogoutPasBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                currentLogOutPasStatus=true;
-//                //DisconnectTheDriver();
-//
+        LogoutPasBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentLogOutPasStatus=true;
+                //DisconnectTheDriver();
+
 //                mAuth.signOut();
-//
-//                LogOutPassenger();
-//            }
-//        });
+
+                LogOutPassenger();
+            }
+        });
+
+
 
         MCallBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,7 +249,7 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
     }
 
     private void LogOutPassenger() {
-        Intent welcomeIntent = new Intent(PassengerMapActivity.this, WelcomeActivity.class);
+        Intent welcomeIntent = new Intent(PassengerMapActivity.this, PasMenuActivity.class);
         welcomeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(welcomeIntent);
         finish();
