@@ -56,7 +56,7 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 
     private LatLng PasPickUpLocation;
     private int radius = 1;
-    private Boolean driverFound = false;
+    private Boolean driverFound = false, requestType = false;
     private String driverFoundID;
 
     private FirebaseAuth mAuth;
@@ -82,17 +82,18 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
 //        mAuth = FirebaseAuth.getInstance();
 //        currentUser = mAuth.getCurrentUser();
 //        PasID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        PasID = Prevelent.currentOnlineUser.getPhone();
         currentPassenger = Prevelent.currentOnlineUser.getPhone();
 
-        PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Passsenger Requests");
+        PasDatabaseRef = FirebaseDatabase.getInstance().getReference().child("PasssengerRequests");
 
-        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("drivers_working");
+        DriverLocationRef=FirebaseDatabase.getInstance().getReference().child("driversWorking");
         DriverAvailableRef=FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
         LogoutPasBtn = (Button) findViewById(R.id.m_call);
         settingsPasBtn = (Button) findViewById(R.id.m_call2);
 
-        //MCallBtn = (Button) findViewById(R.id.m_call);
+        MCallBtn = (Button) findViewById(R.id.m_call3);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -118,14 +119,59 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
             @Override
             public void onClick(View v) {
 
-                GeoFire geoFire = new GeoFire(PasDatabaseRef);
-                geoFire.setLocation(PasID, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+                if (requestType)
+                {
+//                    requestType = false;
+//                    geoQuery.removeAllListeners();
+//                    DriverLocationRef.removeEventListener(DriverLocationRefListner);
+//
+//                    if (driverFound != null)
+//                    {
+//                        DriversRef = FirebaseDatabase.getInstance().getReference()
+//                                .child("Users").child("Drivers").child(driverFoundID).child("CustomerRideID");
+//
+//                        DriversRef.removeValue();
+//
+//                        driverFoundID = null;
+//                    }
+//
+//                    driverFound = false;
+//                    radius = 1;
+//
+//                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//                    GeoFire geoFire = new GeoFire(CustomerDatabaseRef);
+//                    geoFire.removeLocation(customerId);
+//
+//                    if (PickUpMarker != null)
+//                    {
+//                        PickUpMarker.remove();
+//                    }
+//                    if (DriverMarker != null)
+//                    {
+//                        DriverMarker.remove();
+//                    }
+//
+//                    CallCabCarButton.setText("Call a Cab");
+//                    relativeLayout.setVisibility(View.GONE);
+                }
+                else
+                {
+                    requestType = true;
 
-                PasPickUpLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Pick Me"));
+                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                MCallBtn.setText("Getting Driver");
-                GetClosetDriverCab();
+                    GeoFire geoFire = new GeoFire(PasDatabaseRef);
+                    geoFire.setLocation(PasID, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
+
+                    PasPickUpLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(PasPickUpLocation).title("Seeking a Bus"));
+
+                    MCallBtn.setText("Getting a Bus");
+                    GetClosetDriverCab();
+                }
+
+
             }
         });
     }
@@ -203,7 +249,6 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                             MCallBtn.setText("Bus Found");
 
                             // Getting Lattitude and Longtiitude from the DB and coonvert it to  Double
-
                             if (driverLocationMap.get(0) != null)
                             {
                                 LocationLat = Double.parseDouble(driverLocationMap.get(0).toString());
@@ -212,7 +257,6 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
                             {
                                 LocationLng = Double.parseDouble(driverLocationMap.get(1).toString());
                             }
-
                             // Add Marker for Driver Location
                             LatLng DriverLatLng = new LatLng(LocationLat, LocationLng);
 
@@ -255,16 +299,6 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
         finish();
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
@@ -275,10 +309,6 @@ public class PassengerMapActivity extends FragmentActivity implements OnMapReady
         }
         buildGoogleApiClient();
         mMap.setMyLocationEnabled(true);
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     private void buildGoogleApiClient()

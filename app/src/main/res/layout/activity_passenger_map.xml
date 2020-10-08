@@ -30,7 +30,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="Button A"
+        android:text="go back"
+        android:layout_margin="5dp"
+        android:textColor="@color/QRCodeWhiteColor"
+        android:background="@drawable/buttonblack"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:id="@+id/m_call3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Request a PickUp"
         android:layout_margin="5dp"
         android:textColor="@color/QRCodeWhiteColor"
         android:background="@drawable/buttonblack"

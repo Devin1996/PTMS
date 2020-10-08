@@ -118,7 +118,7 @@ public class PasMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, ReadConfirmedBusBooking.class);
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, PassengerMapActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, PassengerMapsActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });

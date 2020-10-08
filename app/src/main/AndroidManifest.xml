@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -27,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReadConfirmedBusBooking"></activity>
+        <activity android:name=".PassengerMapsActivity"></activity>
+        <activity android:name=".ReadConfirmedBusBooking" />
         <activity android:name=".ChatBotActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".DetailActivity" />
@@ -45,11 +45,10 @@
         <activity android:name=".DateTimeActivity" />
         <activity android:name=".AddToTravelPlansActivity" />
         <activity android:name=".TimeDisplayActivity" />
-        <activity android:name=".TimeSchedulesActivity" />
-<!--        <activity-->
-<!--            android:name=".TimeScheduleActivity"-->
-<!--            android:label="@string/title_activity_time_schedule"-->
-<!--            android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity android:name=".TimeSchedulesActivity" /> <!-- <activity -->
+        <!-- android:name=".TimeScheduleActivity" -->
+        <!-- android:label="@string/title_activity_time_schedule" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity android:name=".PassSettingsActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
@@ -98,14 +97,11 @@
         </activity>
 
         <provider
-            android:authorities="${applicationId}.here.this.library.provider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.here.this.library.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="android:authorities"
-            >
-
-        </provider>
+            tools:replace="android:authorities"></provider>
     </application>
 
 </manifest>
