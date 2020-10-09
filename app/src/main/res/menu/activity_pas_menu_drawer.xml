@@ -20,6 +20,14 @@
             android:id="@+id/nav_tools"
             android:icon="@drawable/on_board"
             android:title="On Board" />
+        <item
+            android:id="@+id/near_by"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="Near by" />
+        <item
+            android:id="@+id/promo"
+            android:icon="@drawable/ic_baseline_card_giftcard_24"
+            android:title="Promotions" />
     </group>
 
     <item android:title="                         Other">

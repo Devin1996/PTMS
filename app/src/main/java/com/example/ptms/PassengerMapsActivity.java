@@ -325,7 +325,7 @@ public class PassengerMapsActivity extends FragmentActivity implements OnMapRead
                                 CallCabCarButton.setText("A Bus Found: " + String.valueOf(Distance));
                             }
 
-                            DriverMarker = mMap.addMarker(new MarkerOptions().position(DriverLatLng).title("your Bus is here").icon(BitmapDescriptorFactory.fromResource(R.drawable.car)));
+                            DriverMarker = mMap.addMarker(new MarkerOptions().position(DriverLatLng).title("your Bus is here").icon(BitmapDescriptorFactory.fromResource(R.drawable.rsz_bus123)));
                         }
                     }
 

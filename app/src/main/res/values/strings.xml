@@ -24,4 +24,8 @@
     <string name="title_activity_time_schedule">TimeScheduleActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+    <string name="text_favorites">Bus Routes</string>
+    <string name="text_video">Train Routes</string>
+    <!--    <string name="text_music">Music</string>-->
 </resources>

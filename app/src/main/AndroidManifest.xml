@@ -26,7 +26,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PassengerMapsActivity"></activity>
+        <activity android:name=".DuoTimeSlotActivity"></activity>
+        <activity android:name=".TrainRouteFragment" />
+        <activity android:name=".BusRoutesFragment" />
+        <activity android:name=".BusRouteFragment" />
+        <activity android:name=".DuoRoutesActivity" />
+        <activity android:name=".PromotionsActivity" />
+        <activity android:name=".PassengerMapsActivity" />
         <activity android:name=".ReadConfirmedBusBooking" />
         <activity android:name=".ChatBotActivity" />
         <activity android:name=".ResetPasswordActivity" />
@@ -101,7 +107,7 @@
             android:authorities="${applicationId}.here.this.library.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="android:authorities"></provider>
+            tools:replace="android:authorities" />
     </application>
 
 </manifest>

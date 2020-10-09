@@ -24,7 +24,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.ptms.Model.Promotion;
 import com.example.ptms.Prevelent.Prevelent;
 import com.example.ptms.ViewHolder.PromotionAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
@@ -85,7 +84,7 @@ public class PasMenuActivity extends AppCompatActivity {
         myTravelPlansBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, MyTravelPlansActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , MyTravelPlansActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -93,7 +92,7 @@ public class PasMenuActivity extends AppCompatActivity {
         newBookbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, Search4BookActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , Search4BookActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -109,7 +108,7 @@ public class PasMenuActivity extends AppCompatActivity {
         onBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, OnBoardActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , OnBoardActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -118,7 +117,7 @@ public class PasMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, ReadConfirmedBusBooking.class);
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, PassengerMapsActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , PassengerMapsActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
@@ -130,7 +129,7 @@ public class PasMenuActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home , R.id.nav_gallery , R.id.nav_slideshow ,
-                R.id.nav_tools , R.id.nav_share , R.id.nav_send)
+                R.id.nav_tools , R.id.nav_share , R.id.nav_send , R.id.near_by , R.id.promo)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this , R.id.nav_host_fragment);
@@ -155,7 +154,7 @@ public class PasMenuActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext() , "nav_slideshow is Selected" , Toast.LENGTH_LONG).show();
                         break;
                     case R.id.nav_gallery:
-                        Intent timeScheduleIntent = new Intent(PasMenuActivity.this , TimeSchedulesActivity.class);
+                        Intent timeScheduleIntent = new Intent(PasMenuActivity.this , DuoRoutesActivity.class);
                         startActivity(timeScheduleIntent);
                         break;
                     case R.id.nav_slideshow:
@@ -165,6 +164,15 @@ public class PasMenuActivity extends AppCompatActivity {
                     case R.id.nav_tools:
                         Intent settingsIntent = new Intent(PasMenuActivity.this , OnBoardActivity.class);
                         startActivity(settingsIntent);
+                        break;
+
+                    case R.id.near_by:
+                        Intent nearByIntent = new Intent(PasMenuActivity.this , PassengerMapsActivity.class);
+                        startActivity(nearByIntent);
+                        break;
+                    case R.id.promo:
+                        Intent promotionIntent = new Intent(PasMenuActivity.this , PromotionsActivity.class);
+                        startActivity(promotionIntent);
                         break;
 
                     case R.id.nav_share:
@@ -197,37 +205,37 @@ public class PasMenuActivity extends AppCompatActivity {
 
 
         models = new ArrayList<>();
-        models.add(new Promotion(R.drawable.kandy, "Upcountry","Sri Lanka's Up Country is the island at its most scenic, a mist-wrapped land of emerald peaks."));
-        models.add(new Promotion(R.drawable.galle, "Visit DownSouth","So you keep hearing the Down South of Sri Lanka is amazing, then you must visit."));
-        models.add(new Promotion(R.drawable.colombo, "Capital","Colombo, gateway to the wonder of Sri Lanka, boasts a rich colonial heritage."));
-        models.add(new Promotion(R.drawable.sigiriya, "Ancient Kingdom","Visit Ancient Capital cities where ancient rulers ruled the Country for years"));
+        models.add(new Promotion(R.drawable.kandy , "Upcountry" , "Sri Lanka's Up Country is the island at its most scenic, a mist-wrapped land of emerald peaks."));
+        models.add(new Promotion(R.drawable.galle , "Visit DownSouth" , "So you keep hearing the Down South of Sri Lanka is amazing, then you must visit."));
+        models.add(new Promotion(R.drawable.colombo , "Capital" , "Colombo, gateway to the wonder of Sri Lanka, boasts a rich colonial heritage."));
+        models.add(new Promotion(R.drawable.sigiriya , "Ancient Kingdom" , "Visit Ancient Capital cities where ancient rulers ruled the Country for years"));
 
-        adapter = new PromotionAdapter(models,this);
+        adapter = new PromotionAdapter(models , this);
 
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
-        viewPager.setPadding(130,0,130,0);
+        viewPager.setPadding(130 , 0 , 130 , 0);
 
-        Integer[]  colors_temp = {
-                getResources().getColor(R.color.color1),
-                getResources().getColor(R.color.color2),
-                getResources().getColor(R.color.color3),
+        Integer[] colors_temp = {
+                getResources().getColor(R.color.color1) ,
+                getResources().getColor(R.color.color2) ,
+                getResources().getColor(R.color.color3) ,
                 getResources().getColor(R.color.color4)
         };
         colors = colors_temp;
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position , float positionOffset , int positionOffsetPixels) {
-                if (position<(adapter.getCount()-1) && position < (colors.length-1)){
+                if (position < (adapter.getCount() - 1) && position < (colors.length - 1)) {
                     viewPager.setBackgroundColor(
                             (Integer) argbEvaluator.evaluate(
-                                    positionOffset,
-                                    colors[position],
-                                    colors[position+1]
+                                    positionOffset ,
+                                    colors[position] ,
+                                    colors[position + 1]
                             )
                     );
-                }else {
-                    viewPager.setBackgroundColor(colors[colors.length-1]);
+                } else {
+                    viewPager.setBackgroundColor(colors[colors.length - 1]);
                 }
             }
 
