@@ -15,7 +15,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Travel Plans</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
@@ -25,7 +25,7 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
-    <string name="text_favorites">Bus Routes</string>
-    <string name="text_video">Train Routes</string>
+    <string name="text_favorites">Bus</string>
+    <string name="text_video">Train</string>
     <!--    <string name="text_music">Music</string>-->
 </resources>

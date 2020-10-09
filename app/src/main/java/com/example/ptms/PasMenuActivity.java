@@ -151,14 +151,16 @@ public class PasMenuActivity extends AppCompatActivity {
                 //myRef.setValue("Just Checking"+PassengerId);
                 switch (menuItem.getItemId()) {
                     case R.id.nav_home:
-                        Toast.makeText(getApplicationContext() , "nav_slideshow is Selected" , Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext() , "nav_slideshow is Selected" , Toast.LENGTH_LONG).show();
+                        Intent travelPlanIntent = new Intent(PasMenuActivity.this , MyTravelPlansActivity.class);
+                        startActivity(travelPlanIntent);
                         break;
                     case R.id.nav_gallery:
                         Intent timeScheduleIntent = new Intent(PasMenuActivity.this , DuoRoutesActivity.class);
                         startActivity(timeScheduleIntent);
                         break;
                     case R.id.nav_slideshow:
-                        Intent timeSlotIntent = new Intent(PasMenuActivity.this , Search4BookActivity.class);
+                        Intent timeSlotIntent = new Intent(PasMenuActivity.this , DuoTimeSlotActivity.class);
                         startActivity(timeSlotIntent);
                         break;
                     case R.id.nav_tools:

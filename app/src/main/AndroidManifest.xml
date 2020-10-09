@@ -26,7 +26,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DuoTimeSlotActivity"></activity>
+        <activity android:name=".DuoTravelPlans"></activity>
+        <activity android:name=".TrainTimeSlotFragment" />
+        <activity android:name=".TrainTimeSlotActivity" />
+        <activity android:name=".BusTimeSlotFragment" />
+        <activity android:name=".DuoTimeSlotActivity" />
         <activity android:name=".TrainRouteFragment" />
         <activity android:name=".BusRoutesFragment" />
         <activity android:name=".BusRouteFragment" />
