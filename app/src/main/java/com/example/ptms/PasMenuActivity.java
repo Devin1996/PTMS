@@ -152,7 +152,7 @@ public class PasMenuActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_home:
                         //Toast.makeText(getApplicationContext() , "nav_slideshow is Selected" , Toast.LENGTH_LONG).show();
-                        Intent travelPlanIntent = new Intent(PasMenuActivity.this , MyTravelPlansActivity.class);
+                        Intent travelPlanIntent = new Intent(PasMenuActivity.this , DuoTravelPlans.class);
                         startActivity(travelPlanIntent);
                         break;
                     case R.id.nav_gallery:
