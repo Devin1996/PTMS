@@ -17,6 +17,11 @@
     <color name="logocolor3">#FE964C</color>
     <color name="color8">#FA9248</color>
 
+    <color name="whiteyellow">#FFEEDB</color>
+    <color name="greeen">#8CC63E</color>
+    <color name="blueee">#6AC9EE</color>
+    <color name="yelllow">#FCDB02</color>
+
     <color name="bg_bubble_self">#62caa6</color>
     <color name="bg_bubble_watbot">#ecf0f1</color>
 

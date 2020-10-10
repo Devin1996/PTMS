@@ -217,10 +217,10 @@ public class PasMenuActivity extends AppCompatActivity {
 
 
         models = new ArrayList<>();
-        models.add(new Promotion(R.drawable.kandy , "Upcountry" , "Sri Lanka's Up Country is the island at its most scenic, a mist-wrapped land of emerald peaks."));
-        models.add(new Promotion(R.drawable.galle , "Visit DownSouth" , "So you keep hearing the Down South of Sri Lanka is amazing, then you must visit."));
-        models.add(new Promotion(R.drawable.colombo , "Capital" , "Colombo, gateway to the wonder of Sri Lanka, boasts a rich colonial heritage."));
-        models.add(new Promotion(R.drawable.sigiriya , "Ancient Kingdom" , "Visit Ancient Capital cities where ancient rulers ruled the Country for years"));
+        models.add(new Promotion(R.drawable.socialdistance , "" , ""));
+        models.add(new Promotion(R.drawable.ptmsmsg , "Visit DownSouth" , ""));
+        models.add(new Promotion(R.drawable.d86077acf94c2f4d0d8be5dec12e47f4 , "Capital" , ""));
+        models.add(new Promotion(R.drawable.map , "Ancient Kingdom" , ""));
 
         adapter = new PromotionAdapter(models , this);
 
@@ -229,10 +229,10 @@ public class PasMenuActivity extends AppCompatActivity {
         viewPager.setPadding(130 , 0 , 130 , 0);
 
         Integer[] colors_temp = {
-                getResources().getColor(R.color.color1) ,
-                getResources().getColor(R.color.color2) ,
-                getResources().getColor(R.color.color3) ,
-                getResources().getColor(R.color.color4)
+                getResources().getColor(R.color.yelllow) ,
+                getResources().getColor(R.color.greeen) ,
+                getResources().getColor(R.color.blueee) ,
+                getResources().getColor(R.color.whiteyellow)
         };
         colors = colors_temp;
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
