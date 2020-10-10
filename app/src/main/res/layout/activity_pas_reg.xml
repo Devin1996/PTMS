@@ -1,110 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/logocolor3"
     tools:context=".PasRegActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainlogo"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true"
+        android:elevation="10dp"
+        app:cardCornerRadius="40dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/greylogo" />
+
+    </androidx.cardview.widget.CardView>
 
 
 
     <EditText
         android:id="@+id/pas_pwd_reg"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pas_name"
-
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
+        android:layout_below="@+id/pas_mobile_reg"
         android:background="@drawable/input_design"
         android:hint="Enter a Password"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/cardview_dark_background"
-        android:textColorHint="@color/cardview_dark_background"
+        android:textColor="@color/logocolor"
+        android:textColorHint="@color/logocolor2"
         android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pas_mobile_reg" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/pas_cpwd_reg"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pas_name"
-
         android:layout_marginStart="14dp"
         android:layout_marginLeft="14dp"
         android:layout_marginEnd="14dp"
         android:layout_marginRight="14dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/pas_pwd_reg"
         android:background="@drawable/input_design"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/cardview_dark_background"
-        android:textColorHint="@color/cardview_dark_background"
+        android:textColor="@color/logocolor"
+        android:textColorHint="@color/logocolor2"
         android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/register_btn"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginEnd="12dp"
+        android:layout_below="@+id/pas_cpwd_reg"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:text="Create Account"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/logocolor2"
+        android:textSize="18sp"/>
 
     <EditText
         android:id="@+id/pas_name"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="298dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/mainlogo"
         android:background="@drawable/input_design"
         android:ems="10"
         android:hint="Enter your Name"
         android:inputType="textEmailAddress"
         android:padding="20dp"
-        android:textColor="@color/cardview_dark_background"
-        android:textColorHint="@color/cardview_dark_background"
+        android:textColor="@color/logocolor"
+        android:textColorHint="@color/logocolor2"
         android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/pas_mobile_reg"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+android:layout_below="@+id/pas_name"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/input_design"
@@ -112,23 +118,11 @@
         android:hint="Enter your Mobile No"
         android:inputType="textEmailAddress"
         android:padding="20dp"
-        android:textColor="@color/cardview_dark_background"
-        android:textColorHint="@color/cardview_dark_background"
+        android:textColor="@color/logocolor"
+        android:textColorHint="@color/logocolor2"
         android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pas_name" />
-
-    <ImageView
-        android:id="@+id/reglogo"
-        android:layout_width="107dp"
-        android:layout_height="157dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/pas_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/greylogo" />
+        android:textStyle="bold" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

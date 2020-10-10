@@ -18,8 +18,14 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/logocolor"
         android:fitsSystemWindows="true"
+        android:theme="@style/NavigationView"
         app:headerLayout="@layout/nav_header_pas_menu"
+        app:itemIconTint="@color/logocolor3"
+        app:itemTextColor="@color/logocolor2"
+        android:outlineAmbientShadowColor="@color/logocolor3"
+        android:outlineSpotShadowColor="@color/logocolor"
         app:menu="@menu/activity_pas_menu_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

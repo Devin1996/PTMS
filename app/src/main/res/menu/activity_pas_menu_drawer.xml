@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
+
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_book_24"
             android:title="@string/menu_home" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/route"
@@ -22,7 +24,7 @@
             android:title="On Board" />
         <item
             android:id="@+id/near_by"
-            android:icon="@drawable/ic_baseline_location_on_24"
+            android:icon="@drawable/ic_baseline_place_24_yellow"
             android:title="Near by" />
         <item
             android:id="@+id/promo"
@@ -30,7 +32,7 @@
             android:title="Promotions" />
     </group>
 
-    <item android:title="                         Other">
+    <item android:title="Other">
         <menu>
             <item
                 android:id="@+id/nav_share"
@@ -38,8 +40,14 @@
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_send"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="About" />
+
+            <item
+                android:id="@+id/nav_about"
                 android:icon="@drawable/logout"
                 android:title="Log Out" />
+
         </menu>
     </item>
 

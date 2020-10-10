@@ -8,8 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +24,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.ptms.Model.Promotion;
 import com.example.ptms.Prevelent.Prevelent;
 import com.example.ptms.ViewHolder.PromotionAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +46,7 @@ public class PasMenuActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Boolean currentLogOutPasStatus = false;
 
-    private Button myTravelPlansBtn, timeSchedulesBtn, onBoardBtn, nearByBtn, newBookbtn;
+    private ImageView myTravelPlansBtn, timeSchedulesBtn, addNewTravelPlanBtn, onBoardBtn, nearByBtn, routesbtn;
 
     ViewPager viewPager;
     PromotionAdapter adapter;
@@ -64,46 +66,47 @@ public class PasMenuActivity extends AppCompatActivity {
         final String PassengerId = intent.getStringExtra("PasId");
 
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , MyTravelPlansActivity.class);
-//                startActivity(myTravelPlansIntents);
-//            }
-//        });
+        FloatingActionButton fab = findViewById(R.id.fab123);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view , "Replace with your own action" , Snackbar.LENGTH_LONG)
+                        .setAction("Action" , null).show();
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , ChatBotActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
 
-        myTravelPlansBtn = (Button) findViewById(R.id.btn_home_travel_plans);
-        newBookbtn = (Button) findViewById(R.id.btn_home_book_new);
-        onBoardBtn = (Button) findViewById(R.id.btn_home_on_board);
-//        timeSchedulesBtn = (Button) findViewById(R.id.btn_home_time_schedules);
-        nearByBtn = (Button) findViewById(R.id.btn_home_on_near_by_journey);
+        myTravelPlansBtn = (ImageView) findViewById(R.id.travel_plans_btn);
+        routesbtn = (ImageView) findViewById(R.id.routes_btn);
+        onBoardBtn = (ImageView) findViewById(R.id.on_board_btn);
+        timeSchedulesBtn = (ImageView) findViewById(R.id.time_slot_btn);
+        nearByBtn = (ImageView) findViewById(R.id.near_by_btn);
+        addNewTravelPlanBtn = (ImageView) findViewById(R.id.add_new_travel_plan_btn);
 
         myTravelPlansBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , MyTravelPlansActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , DuoTravelPlans.class);
                 startActivity(myTravelPlansIntents);
             }
         });
 
-        newBookbtn.setOnClickListener(new View.OnClickListener() {
+        routesbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , Search4BookActivity.class);
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , DuoRoutesActivity.class);
                 startActivity(myTravelPlansIntents);
             }
         });
-//
-//        timeSchedulesBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, TimeSchedulesActivity.class);
-//                startActivity(myTravelPlansIntents);
-//            }
-//        });
+
+        timeSchedulesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , DuoTimeSlotActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
 
         onBoardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +125,13 @@ public class PasMenuActivity extends AppCompatActivity {
             }
         });
 
+        addNewTravelPlanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , DuoTimeSlotActivity.class);
+                startActivity(myTravelPlansIntents);
+            }
+        });
 
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

@@ -10,7 +10,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="676dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/appBarLayout2"
         android:layout_centerVertical="true"
         android:layout_marginTop="-3dp"
@@ -18,197 +18,132 @@
         android:foregroundGravity="center"
         android:overScrollMode="never"></androidx.viewpager.widget.ViewPager>
 
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/btnOrder"-->
-<!--        android:textColor="#fff"-->
-<!--        android:text="Book Now"-->
-<!--        android:background="@drawable/buttonblack"-->
-<!--        android:paddingLeft="30dp"-->
-<!--        android:paddingRight="30dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginBottom="60dp"-->
-<!--        android:layout_centerHorizontal="true">-->
-<!--    </Button>-->
-
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/btnBook123"-->
-<!--        android:textColor="#fff"-->
-<!--        android:text="Book Now"-->
-<!--        android:background="@drawable/buttonblack"-->
-<!--        android:paddingLeft="30dp"-->
-<!--        android:paddingRight="30dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginBottom="120dp"-->
-<!--        android:layout_centerHorizontal="true">-->
-<!--    </Button>-->
-
-    <Button
-        android:id="@+id/btn_home_book_new"
+    <LinearLayout
+        android:id="@+id/linear1_category_layout"
         android:layout_width="match_parent"
+        android:layout_below="@+id/appBarLayout2"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="380dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Book new Travel"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_home_on_near_by_journey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_below="@+id/btn_home_book_new"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="Near by"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_home_on_board"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo1"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/add_new_travel_plan_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/newplansc" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo2"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/near_by_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/nearbys" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo5"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/on_board_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/onboards" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2_category_layout"
         android:layout_width="match_parent"
+        android:layout_below="@+id/linear1_category_layout"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_below="@+id/btn_home_on_near_by_journey"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="On Board"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_home_travel_plans"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/btn_home_on_board"
-        android:background="@drawable/buttonblack"
-        android:padding="17dp"
-        android:text="My Travel Plans"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo3"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
 
-<!--        android:id="@+id/btn_home_travel_plans"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:layout_marginLeft="12dp"-->
-<!--        android:layout_marginTop="29dp"-->
-<!--        android:layout_marginEnd="12dp"-->
-<!--        android:layout_marginRight="12dp"-->
-<!--        android:background="@drawable/fbt2"-->
-<!--        android:text="My Travel Plans"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />-->
+            <ImageView
+                android:id="@+id/time_slot_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/timeslotsc" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_home_book_new"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:layout_marginStart="12dp"-->
-<!--        android:layout_marginLeft="12dp"-->
-<!--        android:layout_marginTop="111dp"-->
-<!--        android:layout_marginEnd="12dp"-->
-<!--        android:layout_marginRight="12dp"-->
-<!--        android:layout_marginBottom="125dp"-->
-<!--        android:background="@drawable/fb3"-->
-<!--        android:text="Book new Travel"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/btn_home_time_schedules"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/btn_home_travel_plans" />-->
+        </androidx.cardview.widget.CardView>
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_home_on_board"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginLeft="8dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:layout_marginBottom="13dp"-->
-<!--        android:background="@drawable/fb9"-->
-<!--        android:text="On Board"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/fab"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo4"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_home_on_near_by_journey"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginLeft="8dp"-->
-<!--        android:layout_marginTop="115dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:layout_marginBottom="118dp"-->
-<!--        android:background="@drawable/fb9"-->
-<!--        android:text="Near by"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/btn_home_on_board"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/btn_home_time_schedules" />-->
+            <ImageView
+                android:id="@+id/routes_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/routesc" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_home_time_schedules"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        android:layout_marginStart="9dp"-->
-<!--        android:layout_marginLeft="9dp"-->
-<!--        android:layout_marginEnd="9dp"-->
-<!--        android:layout_marginRight="9dp"-->
-<!--        android:background="@drawable/fb6"-->
-<!--        android:text="Time Schedules"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo6"
+            android:layout_width="102dp"
+            android:layout_height="102dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/travel_plans_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/travelplansc" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/logocolor"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintStart_toStartOf="@+id/include2"
         app:layout_constraintTop_toTopOf="parent">
@@ -218,6 +153,7 @@
             android:layout_width="360dp"
             android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
+            android:backgroundTint="@color/logocolor"
             android:baselineAligned="false"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -232,17 +168,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appBarLayout2" />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginEnd="19dp"-->
-<!--        android:layout_marginRight="19dp"-->
-<!--        android:layout_marginBottom="19dp"-->
-<!--        android:layout_marginTop="500dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:srcCompat="@android:drawable/ic_dialog_email" />-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_baseline_question_answer_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

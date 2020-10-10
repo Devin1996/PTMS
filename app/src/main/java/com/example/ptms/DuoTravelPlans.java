@@ -22,7 +22,7 @@ public class DuoTravelPlans extends AppCompatActivity {
         setContentView(R.layout.activity_duo_travel_plans);
 
         fragmentManager = getSupportFragmentManager();
-        fragment = new BusTimeSlotFragment();
+        fragment = new BusTravelPlanFragment();
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.main_container , fragment).commit();
 
@@ -36,7 +36,7 @@ public class DuoTravelPlans extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_favorites:
-                                fragment = new BusTimeSlotFragment();
+                                fragment = new BusTravelPlanFragment();
                                 break;
 
                             case R.id.action_video:

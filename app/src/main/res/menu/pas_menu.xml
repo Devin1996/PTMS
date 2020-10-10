@@ -4,6 +4,7 @@
     <item
         android:id="@+id/action_bot"
         android:orderInCategory="100"
+        android:visible="false"
         android:title="Travel Bot"
         app:showAsAction="never" />
 </menu>
