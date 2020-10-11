@@ -138,7 +138,7 @@ public class PasMenuActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home , R.id.nav_gallery , R.id.nav_slideshow ,
-                R.id.nav_tools , R.id.nav_share , R.id.nav_send , R.id.near_by , R.id.promo)
+                R.id.nav_tools , R.id.nav_share , R.id.nav_send , R.id.near_by , R.id.promo, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this , R.id.nav_host_fragment);
@@ -186,6 +186,11 @@ public class PasMenuActivity extends AppCompatActivity {
                     case R.id.nav_share:
                         Intent scanQrIntent = new Intent(PasMenuActivity.this , PassSettingsActivity.class);
                         startActivity(scanQrIntent);
+                        break;
+
+                    case R.id.nav_about:
+                        Intent aboutIntent = new Intent(PasMenuActivity.this , AboutActivity.class);
+                        startActivity(aboutIntent);
                         break;
 
                     case R.id.nav_send:

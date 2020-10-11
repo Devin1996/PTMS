@@ -39,12 +39,12 @@
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Settings" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_about"
                 android:icon="@drawable/ic_baseline_info_24"
                 android:title="About" />
 
             <item
-                android:id="@+id/nav_about"
+                android:id="@+id/nav_send"
                 android:icon="@drawable/logout"
                 android:title="Log Out" />
 

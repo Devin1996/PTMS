@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/logocolor3"
+    tools:context=".AboutActivity">
+
+    <TextView
+        android:id="@+id/appsname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transport on Demand"
+        android:textSize="25sp"
+        android:textColor="@color/logocolor"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textStyle="bold">
+    </TextView>
+    <LinearLayout
+        android:layout_below="@+id/appsname"
+        android:id="@+id/linear1_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo2"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/near_by_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/greylogo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginlogo5"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/on_board_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dev" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</RelativeLayout>
