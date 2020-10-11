@@ -119,7 +119,6 @@ public class PasMenuActivity extends AppCompatActivity {
         nearByBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent myTravelPlansIntents = new Intent(PasMenuActivity.this, ReadConfirmedBusBooking.class);
                 Intent myTravelPlansIntents = new Intent(PasMenuActivity.this , PassengerMapsActivity.class);
                 startActivity(myTravelPlansIntents);
             }
@@ -146,9 +145,6 @@ public class PasMenuActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this , navController , mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView , navController);
 
-
-        //TextView userNameTextView = headerview.findViewById(R.id.user_profile_name);
-        //userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
         navigationView.bringToFront();
 

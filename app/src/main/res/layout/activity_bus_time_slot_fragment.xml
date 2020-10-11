@@ -14,7 +14,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:text="Time Slot Search"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor"
         android:textSize="24sp"
         android:layout_alignParentLeft="true" />
 
@@ -27,7 +27,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:layout_toStartOf="@+id/search_btn"
-        android:background="@drawable/search_layout"
+        android:background="@drawable/chatbox"
         android:ems="10"
         android:hint="From"
         android:inputType="textPersonName"
@@ -35,7 +35,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp"
-        android:textColor="#999999"
+        android:textColor="@color/logocolor"
         android:textSize="16sp"
         android:layout_alignLeft="@+id/heading_label"
         android:layout_toLeftOf="@+id/search_btn" />
@@ -49,7 +49,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="12dp"
         android:layout_toStartOf="@+id/search_btn"
-        android:background="@drawable/search_layout"
+        android:background="@drawable/chatbox"
         android:ems="10"
         android:hint="To"
         android:inputType="textPersonName"
@@ -57,7 +57,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp"
-        android:textColor="#999999"
+        android:textColor="@color/logocolor"
         android:textSize="16sp"
         android:layout_alignLeft="@+id/heading_label"
         android:layout_toLeftOf="@+id/search_btn" />
@@ -70,7 +70,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/search_field"
         android:layout_marginRight="30dp"
-        android:background="@android:color/background_light"
+        android:backgroundTint="@color/logocolor3"
         app:srcCompat="@drawable/sea"
         android:layout_alignParentRight="true"
         tools:ignore="VectorDrawableCompat" />

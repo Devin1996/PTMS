@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/logocolor"
     tools:context=".PassengerMapsActivity">
 
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/call_a_car_button"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/logocolor"
         android:visibility="gone">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -35,7 +35,7 @@
             android:layout_marginStart="15dp"
             android:padding="3dp"
             android:src="@drawable/profile"
-            app:civ_border_color="#c880ff"
+            app:civ_border_color="@color/logocolor3"
             app:civ_border_width="2dp"
             tools:ignore="UnknownId" />
 
@@ -47,7 +47,7 @@
             android:layout_marginTop="16dp"
             android:layout_toRightOf="@+id/profile_image_driver"
             android:text="Driver Name"
-            android:textColor="@android:color/white"
+            android:textColor="@color/logocolor2"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/profile_image_driver"
             android:text="Driver Phone Number"
-            android:textColor="@android:color/white"
+            android:textColor="@color/logocolor2"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/profile_image_driver"
             android:text="Driver Car Name"
-            android:textColor="@android:color/white"
+            android:textColor="@color/logocolor2"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -95,36 +95,36 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/logocolor"
         android:text="Request a PickUp"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
-        android:textSize="23sp"
+        android:textColor="@color/logocolor2"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/settings_customer_btn"
-        android:layout_width="190dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark"
-        android:text="Settings"
+        android:background="@color/logocolor"
+        android:text="Back to Menu"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/logocolor2"
         android:textSize="15sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/logout_customer_btn"
-        android:layout_width="190dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimaryDark"
-        android:text="Logout"
+        android:background="@color/logocolor"
+        android:text="End Session"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/logocolor2"
         android:textSize="15sp"
         android:textStyle="bold" />
 

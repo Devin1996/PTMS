@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Date"
         android:layout_marginTop="10dp"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:layout_below="@+id/my_travel_list_to_booked_seats"
         android:textSize="14dp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="From"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:textSize="14dp"
         android:textStyle="bold"
         />
@@ -43,7 +43,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="To"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:textSize="14dp"
         android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="Departutre"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:textSize="14dp"
         android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:text="Arrival Time"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:textSize="14dp"
         android:textStyle="bold"
         />
@@ -83,7 +83,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="No of Seats"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor2"
         android:textSize="14dp"
         android:textStyle="bold"/>
 
@@ -95,7 +95,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Not Confirmed"
-        android:textColor="#740000"
+        android:textColor="@color/logocolor3"
         android:textSize="14dp"
         android:textStyle="bold"/>
 

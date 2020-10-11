@@ -16,7 +16,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:text="Bus Routes"
-        android:textColor="#555555"
+        android:textColor="@color/logocolor"
         android:textSize="24sp" />
 
     <!--    <EditText-->
