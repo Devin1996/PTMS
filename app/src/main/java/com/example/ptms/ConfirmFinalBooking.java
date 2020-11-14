@@ -92,13 +92,13 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-        saveCurrentTime = currentDate.format(calForDate.getTime());
+        saveCurrentTime = currentTime.format(calForDate.getTime());
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("bookingList").child("confirmedBookings")
                 .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking").child(timeSlotKey);
 
-        HashMap<String, Object> orderMap = new HashMap<>();
+        final HashMap<String, Object> orderMap = new HashMap<>();
         //orderMap.put("totalAmount", totalAmount);
         orderMap.put("name" , payName.getText().toString());
         orderMap.put("payAmount" , payAmount.getText().toString());
@@ -114,6 +114,8 @@ public class ConfirmFinalBooking extends AppCompatActivity {
         orderMap.put("rideNo" , rideNo.getText().toString());
         orderMap.put("numberOfSeats" , noSeats.getText().toString());
         orderMap.put("BookedDate", txtDate.getText().toString());
+        orderMap.put("userMobile",Prevelent.currentOnlineUser.getPhone());
+        orderMap.put("state","initial");
 
         ordersRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -129,12 +131,13 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        FirebaseDatabase.getInstance().getReference().child("bookingList").child("buses").child("AllConfirmedBookings").push().updateChildren(orderMap);
+
                                         Toast.makeText(ConfirmFinalBooking.this , "Your Book has been completed" , Toast.LENGTH_SHORT).show();
 
                                         Intent intent = new Intent(ConfirmFinalBooking.this , PasMenuActivity.class);
                                         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
-                                        //finish();
                                     }
                                 }
                             });

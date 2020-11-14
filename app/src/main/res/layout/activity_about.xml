@@ -11,20 +11,20 @@
         android:id="@+id/appsname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transport on Demand"
-        android:textSize="25sp"
-        android:textColor="@color/logocolor"
         android:layout_centerHorizontal="true"
+        android:text="Transport on Demand"
         android:textAlignment="center"
-        android:textStyle="bold">
-    </TextView>
+        android:textColor="@color/logocolor"
+        android:textSize="25sp"
+        android:textStyle="bold"></TextView>
+
     <LinearLayout
-        android:layout_below="@+id/appsname"
         android:id="@+id/linear1_category_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/appsname"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -61,5 +61,112 @@
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/detial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear1_category_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="This study and research present a fully functionalized public transport management
+system for public buses and trains in Sri Lanka. This system has provided considerable
+amount of solutions for various problems related to the public transportation in Sri Lanka. "
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Develped in partial fulfilment of the requirements for the
+Bachelor of Science (Hons) Degree In Software Engineering Final Year Award Project."
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial11"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="DEVELOPED BY:"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial2"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="M A D C De Silva"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial3"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="10018717"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial55"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial4"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="BSc(Hons) in Software Engineering"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial56"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial55"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Batch 17.1"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/detial5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detial56"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="NSBM Green University Town"
+        android:textAlignment="center"
+        android:textColor="@color/logocolor"
+        android:textSize="12sp"
+        android:textStyle="bold"></TextView>
 
 </RelativeLayout>

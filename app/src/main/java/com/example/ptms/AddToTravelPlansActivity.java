@@ -38,6 +38,7 @@ public class AddToTravelPlansActivity extends AppCompatActivity implements
     private ElegantNumberButton numberSeatsButton;
     private TextView fromCity, toCity, arrivalTime, departureTime, rideNo;
     private String timeSlotKey = "", state="Normal";
+    private int price = 300;
 
 
     @Override
