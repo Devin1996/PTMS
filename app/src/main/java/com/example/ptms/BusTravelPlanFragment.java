@@ -177,9 +177,6 @@ public class BusTravelPlanFragment extends Fragment {
 
     }
 
-
-
-
     private void CheckOrderState() {
         DatabaseReference orderRef;
         orderRef = FirebaseDatabase.getInstance().getReference()

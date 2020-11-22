@@ -40,7 +40,7 @@ public class DuoTravelPlans extends AppCompatActivity {
                                 break;
 
                             case R.id.action_video:
-                                fragment = new TrainTimeSlotFragment();
+                                fragment = new TrainTravelPlanFragment();
                                 break;
 
                             case R.id.action_music:

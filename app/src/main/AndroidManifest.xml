@@ -26,7 +26,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".ReadConfirmedTrainBooking"></activity>
+        <activity android:name=".ConfirmFinalTrainBookingActivity" />
+        <activity android:name=".TrainTravelPlansActivity" />
+        <activity android:name=".AddNewTrainBooking" />
+        <activity android:name=".AboutActivity" />
         <activity android:name=".TrainTravelPlanFragment" />
         <activity android:name=".BusTravelPlanFragment" />
         <activity android:name=".DuoTravelPlans" />

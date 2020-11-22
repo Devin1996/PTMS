@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:text="Time Slot Search"
+        android:text="Time Slot Search Buses"
         android:textColor="@color/logocolor"
         android:textSize="24sp"
         android:layout_alignParentLeft="true" />

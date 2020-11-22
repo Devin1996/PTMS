@@ -41,6 +41,7 @@ public class DuoTimeSlotActivity extends AppCompatActivity {
 
                             case R.id.action_video:
                                 fragment = new TrainTimeSlotFragment();
+
                                 break;
 
                             case R.id.action_music:

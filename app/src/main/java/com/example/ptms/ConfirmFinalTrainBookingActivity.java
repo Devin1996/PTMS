@@ -1,5 +1,8 @@
 package com.example.ptms;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,9 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ptms.Model.Book;
 import com.example.ptms.Prevelent.Prevelent;
@@ -26,21 +26,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class ConfirmFinalBooking extends AppCompatActivity {
+public class ConfirmFinalTrainBookingActivity extends AppCompatActivity {
 
     private EditText payName, payID, payAmount, payNote;
     private Button confirmOrderBtn;
     private TextView fromCity, toCity, arrivalTime, departureTime, rideNo, noSeats, txtDate;
     private String timeSlotKey = "";
 
-    //private String totalAmount = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_final_booking);
+        setContentView(R.layout.activity_confirm_final_train_booking);
+
 
         timeSlotKey = getIntent().getStringExtra("timeSlotKey");
+
 
         txtDate = (TextView) findViewById(R.id.booked_date);
         fromCity = (TextView) findViewById(R.id.from_pay_travel_plans);
@@ -93,7 +93,7 @@ public class ConfirmFinalBooking extends AppCompatActivity {
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("bookingList").child("confirmedBookings")
-                .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking").child(timeSlotKey);
+                .child(Prevelent.currentOnlineUser.getPhone()).child("trainBooking").child(timeSlotKey);
 
         final HashMap<String, Object> orderMap = new HashMap<>();
         //orderMap.put("totalAmount", totalAmount);
@@ -121,18 +121,18 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference()
                             .child("bookingList")
                             .child("passengerBookingView")
-                            .child(Prevelent.currentOnlineUser.getPhone()).child("busBooking")
+                            .child(Prevelent.currentOnlineUser.getPhone()).child("trainBooking")
                             .child(timeSlotKey)
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        FirebaseDatabase.getInstance().getReference().child("bookingList").child("buses").child("AllConfirmedBookings").push().updateChildren(orderMap);
+                                        FirebaseDatabase.getInstance().getReference().child("bookingList").child("trains").child("AllConfirmedBookings").push().updateChildren(orderMap);
 
-                                        Toast.makeText(ConfirmFinalBooking.this , "Your Book has been completed" , Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ConfirmFinalTrainBookingActivity.this , "Your Book has been completed" , Toast.LENGTH_SHORT).show();
 
-                                        Intent intent = new Intent(ConfirmFinalBooking.this , PasMenuActivity.class);
+                                        Intent intent = new Intent(ConfirmFinalTrainBookingActivity.this , PasMenuActivity.class);
                                         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     }
@@ -147,7 +147,7 @@ public class ConfirmFinalBooking extends AppCompatActivity {
     private void getBookingDetails(String timeSlotKey) {
         DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference().child("bookingList").child("passengerBookingView")
                 .child(Prevelent.currentOnlineUser.getPhone())
-                .child("busBooking");
+                .child("trainBooking");
         //DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("timeSlots").child("busTime");
 
         bookingRef.child(timeSlotKey).addValueEventListener(new ValueEventListener() {
@@ -160,6 +160,7 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                     toCity.setText(booking.getTo().toUpperCase());
                     arrivalTime.setText(booking.getArrTime());
                     departureTime.setText(booking.getDepTime());
+                    //rideNo.setText(products.getTrackNo());
                     noSeats.setText(booking.getNumberOfSeats());
                     txtDate.setText(booking.getBookedDate());
 

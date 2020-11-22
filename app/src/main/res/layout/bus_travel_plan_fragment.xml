@@ -29,7 +29,7 @@
         android:background="@drawable/buttonblack"
         android:padding="17dp"
         android:layout_margin="15dp"
-        android:text="Confirmed Bookings"
+        android:text="Confirmed Bus Bookings"
         android:textAllCaps="false"
         android:textColor="@color/logocolor2"
         android:textSize="18sp"
