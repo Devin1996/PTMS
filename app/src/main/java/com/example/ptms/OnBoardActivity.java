@@ -90,7 +90,9 @@ public class OnBoardActivity extends AppCompatActivity {
                 } else {
                     //pushValue();
                     Intent intent = new Intent(OnBoardActivity.this , AskHelpActivity.class);
+                    intent.putExtra(EXTRA_TEXT , busDetail);
                     startActivity(intent);
+
                 }
             }
         });

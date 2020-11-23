@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AskHelpActivity">
+    android:background="@color/logocolor3"
+    tools:context=".ReviewBusActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="match_parent"
+        android:background="@drawable/input_design"
+        android:layout_height="400dp"
+        android:ems="10"
+        android:hint="Ask any kind of help from the conductor"
+        android:padding="10dp"
+        android:layout_margin="30dp"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/review"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/buttonblack"
+        android:padding="17dp"
+        android:layout_below="@+id/textView_qr_review"
+        android:text="Ask for the Help"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/review_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:background="@drawable/buttonblack"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/review"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_qr_review"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="QR code relate to your current Travel Bus"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/editTextTextMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careless_btn" />
+
+    <TextView
+        android:id="@+id/textView_review_hiden"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="QR code relate to your current Travel Bus"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/textView_qr_review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careless_btn" />
+</RelativeLayout>

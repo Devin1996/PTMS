@@ -156,6 +156,7 @@ public class ConfirmFinalBooking extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Book booking = dataSnapshot.getValue(Book.class);
 
+                    rideNo.setText(booking.getTrackNo());
                     fromCity.setText(booking.getFrom().toUpperCase());
                     toCity.setText(booking.getTo().toUpperCase());
                     arrivalTime.setText(booking.getArrTime());

@@ -59,9 +59,6 @@ public class ReadConfirmedBusBooking extends AppCompatActivity {
                 holder.txtBookFrom.setText("From : " + model.getFrom());
                 holder.txtBookTo.setText("To : " + model.getTo());
 
-                //int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice())))*Integer.valueOf(model.getQuantity());
-                //overTotalPrice = overTotalPrice+oneTyprProductTPrice;
-
             }
 
             @NonNull
